@@ -1,6 +1,8 @@
 # WorldCupSokerban
 This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Linux
 
+Click on the large tar.gz file under releases for all source & binaries.
+
 
 # WorldCupSokerban  v3.1.1
 ----------------------------------------------------------------
