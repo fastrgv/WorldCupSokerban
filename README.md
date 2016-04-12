@@ -4,10 +4,15 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Li
 Click on the large tar.gz file under releases for all source & binaries.
 
 
-# WorldCupSokerban  v3.1.1
+# WorldCupSokerban  v3.1.2
 ----------------------------------------------------------------
 
 ## Changes (newest @ top):
+
+
+**12apr2016, v3.1.2**
+
+* Important library update for Gnu/Linux users on 27% of distros that do not provide FLAC, ogg, vorbis libraries.  Missing softlinks caused run failure.  That is now fixed.
 
 
 **20feb2016, v3.1.1**
