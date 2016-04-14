@@ -121,13 +121,13 @@ If it doesn't run on your linux distro, you will have to try to build the execut
 
 Requires OS-X or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
-Unzip the archive and you will see a new directory appear with a name like <bundle+date>", that you should rename to something like <install_directory>.  
+Unzip the archive and you will see a new directory appear with a name like (bundle+date), that you should rename to something like (install_directory).  
 
-Users should then cd to <install_directory>, then, at the command line, type the executable name to start the game.
+Users should then cd to (install_directory), then, at the command line, type the executable name to start the game.
 
-Mac users please note:  this game is initiated by opening a terminal, navigating to the <install_directory>, and typing the executable-name on the command line.  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
+Mac users please note:  this game is initiated by opening a terminal, navigating to the (install_directory), and typing the executable-name on the command line.  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
 
-The <install_directory> should contain subdirectories named "data", "libs", and "games".
+The (install_directory) should contain subdirectories named "data", "libs", and "games".
 
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
