@@ -104,14 +104,14 @@ Two [pre-compiled] binary executables are provided, one for gnu/linux and one fo
 Two build scripts are described:
 
 -------------------------------------------------------
-MacOSX:
+MacOSX => ocmp.sh:
 
-<ocmp.sh>:  build script for generating a portable executable that will run on most recent OS-X platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
+build script for generating a portable executable that will run on most recent OS-X platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
 
 ------------------------------------------------------
-GNU/Linux:  
+GNU/Linux => lcmp.sh:
 
-<lcmp.sh>:  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
+utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
 
 If it doesn't run on your linux distro, you will have to try to build the executable yourself.  In that case, it is hoped that this script <lcmp.sh> will work for you.  The intent was to provide all the needed interface/include files under ./incLocal/ and all the nonstandard relocatable libraries under ./libLocal/.
 
