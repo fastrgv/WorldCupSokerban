@@ -6,10 +6,18 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Li
 Click on the large tar.gz file under releases for all source & binaries.
 
 
-# WorldCupSokerban  v3.1.2
+
+# WorldCupSokerban  v3.1.3
 ----------------------------------------------------------------
 
 ## Changes (newest @ top):
+
+
+**16aug2016, v3.1.3**
+
+* Improved code design of snd4ada.cpp.
+* Next(n) and Prev(p) keys now move between the different puzzle levels while in single file test mode, just as in the normal mode.
+* Now includes two, somewhat more refined, sokoban solvers written in Ada:  1) puller;  2) ibox.  These replace the CPP solver previously included.  Use the script "ccc.sh" to compile either in any O.S.
 
 
 **12apr2016, v3.1.2**
@@ -61,7 +69,6 @@ Click on the large tar.gz file under releases for all source & binaries.
 
  * Transcribed from C++, this app is now written completely in the Ada language.
  * Revised pusher (thanks to Anders Widell).
- * Comes with an autosolver <trbfs.cc>
 
 
 ## what is special about this project?
@@ -101,21 +108,28 @@ Works on Macs running OS-X and PCs running GNU/Linux.
 
 ## Build instructions:
 
-Two [pre-compiled] binary executables are provided, one for gnu/linux and one for OS-X.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The other binary [for linux] sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:  GLEW, SDL2, SFML.
+Two [pre-compiled] binary executables are provided, one for gnu/linux and one for OS-X.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The other binary [for linux] sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
+SDL2, SFML, FLAC, ogg, vorbis, & openal.
 
 Two build scripts are described:
 
 -------------------------------------------------------
-MacOSX => ocmp.sh:
+MacOSX:
 
-build script for generating a portable executable that will run on most recent OS-X platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
+<ocmp.sh>:  build script for generating a portable executable that will run on most recent OS-X platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
 
 ------------------------------------------------------
-GNU/Linux => lcmp.sh:
+GNU/Linux:  
 
-utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
+<scmp.sh>:  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
 
-If it doesn't run on your linux distro, you will have to try to build the executable yourself.  In that case, it is hoped that this script <lcmp.sh> will work for you.  The intent was to provide all the needed interface/include files under ./incLocal/ and all the nonstandard relocatable libraries under ./libLocal/.
+The current build is compiled on OpenSUSE v13.2, and uses GLIBC 2.14 [dating from june 2011].  This generally means that if your linux distro uses glibc v2.14 or newer, then the prebuilt binary should probably run on your system (and be rebuildable).
+
+If the delivered linux binary does not run...
+
+* Manually install GNAT GPL from libre.adacore.com/download/.
+* Rerun the compile script scmp.sh.
+
 
 
 -----------------------
@@ -123,13 +137,15 @@ If it doesn't run on your linux distro, you will have to try to build the execut
 
 Requires OS-X or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
-Unzip the archive and you will see a new directory appear with a name like (bundle+date), that you should rename to something like (install_directory).  
+Unzip the archive and you will see a new directory appear with a name like <bundle+date>", that you should rename to something like <install_directory>.  
 
-Users should then cd to (install_directory), then, at the command line, type the executable name to start the game.
+Users should then cd to <install_directory>, then, at the command line, type the executable name to start the game.
 
-Mac users please note:  this game is initiated by opening a terminal, navigating to the (install_directory), and typing the executable-name on the command line.  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
+Linux users can also double click the icon for sokerban_gnu in file manager.
 
-The (install_directory) should contain subdirectories named "data", "libs", and "games".
+Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the <install_directory>, and typing sokerban_osx on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
+
+The <install_directory> should contain subdirectories named "data", "libs", and "games".
 
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
@@ -144,7 +160,7 @@ Remember, the arrow keys control movements and the keyboard controls for view ar
 * (\\) tilt down
 
 
-Finally, subject to several limitations, typing: "trbfs puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you.  There are many cases this solver cannot handle, but it is pretty good at sovling certain types of puzzles, particularly the more dense ones.  It is not very good at the near-Lishout type, if you know what that means.
+Finally, subject to several limitations, typing: "[solver] puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where [solver] can be either "puller" or "ibox".  There are many cases these solvers cannot handle, but they are pretty good at solving certain types of puzzles, particularly the more dense ones.  Use the script ccc.sh to compile either solver.
 
 -----------------------------------------------------------------
 
@@ -184,3 +200,8 @@ http://creativecommons.org/licenses/by-nc/3.0/legalcode/
 
 ### ImageFiles
 ...for textures were freely [no copyright indications] available on google images.  Files for text-textures were created using gimp and are also covered by the GNU GPL v3 license.  The pusher man is modified from a skin by Anders Widell, so thanks to Anders for that.  An alternate pusher is also available that was obtained from OpenGameArt.org and created by felixschuett with a CC0 license.
+
+
+----------------------------------------------
+## Best Download Site for all my games:
+https://github.com/fastrgv?tab=repositories
