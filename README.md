@@ -5,14 +5,23 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Li
 
 Click on the large tar.gz file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.1.3/sban_16aug.tar.gz
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.1.4/sban30dec16.tar.gz
 
 
 
-# WorldCupSokerban  v3.1.3
+# WorldCupSokerban  v3.1.4
 ----------------------------------------------------------------
 
 ## Changes (newest @ top):
+
+
+**30dec16, v3.1.4**
+
+* Increased max # soccer balls to handle all puzzles.
+* Now using generalized SFML-audio interface code: snd4ada.cpp.
+* Added WASD keys for movement.
+* Improved build system to be compatible with more linux distros.
+* Improved OpenGL coding to also support Intel Skylake embedded graphics.
 
 
 **16aug2016, v3.1.3**
@@ -79,7 +88,7 @@ Uses the Ada programming language and fully modern OpenGL methods with textures,
 Focusing on portability and freedom, no coding effort or compromise has been made to accomodate proprietary operating systems.  It relies on a thin SDL2 binding from Dan Vazquez, a thin OpenGL binding from "Lumen", a PNG reader by Stephen Sanguine, and SFML-Audio (because of its elegant audio interface).
 
 
-
+## WorldCupSokerban
 This is a soccer-themed, 3D sokoban puzzle game.  It uses data in a format that is commonly found on the internet.
 
 It has undo (u) and restart (r) functions.  Comes with many puzzle files, each typically having dozens of "levels".  The next (n) and previous (p) keys move between levels.  The (Lshft) and (Rshft) keys move between the different puzzle files (there are currently 60).  The (z) key creates a setpoint (reZero) so that subsequent restarts restore that setpoint.
@@ -106,6 +115,7 @@ Works on Macs running OS-X and PCs running GNU/Linux.
 ## Build Requirements:
  * a recent GNAT Ada compiler;
  * OpenGL 3.3 (or better) and a graphics card that supports it.
+ * Xcode g++ compiler, if using OS-X
 
 
 ## Build instructions:
@@ -113,7 +123,8 @@ Works on Macs running OS-X and PCs running GNU/Linux.
 Two [pre-compiled] binary executables are provided, one for gnu/linux and one for OS-X.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The other binary [for linux] sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
 SDL2, SFML, FLAC, ogg, vorbis, & openal.
 
-Two build scripts are described:
+Two build scripts are described;  and due to a recent script change, a linux build machine need not have a C++ compiler installed.  Only GNAT is required.
+
 
 -------------------------------------------------------
 MacOSX:
@@ -125,12 +136,19 @@ GNU/Linux:
 
 <scmp.sh>:  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
 
-The current build is compiled on OpenSUSE v13.2, and uses GLIBC 2.14 [dating from june 2011].  This generally means that if your linux distro uses glibc v2.14 or newer, then the prebuilt binary should probably run on your system (and be rebuildable).
-
 If the delivered linux binary does not run...
 
 * Manually install GNAT GPL from libre.adacore.com/download/.
 * Rerun the compile script scmp.sh.
+
+
+### Link Problems during linux build:
+
+On a linux build machine, you might have minor link errors, depending on its configuration.  If you are missing "libz", you can simply copy "libz.so" from /usr/gnat/lib/gps/ into /usr/local/lib/.  If "libGL" cannot be found, this literally means "libGL.so" was absent.  But you might have "libGL.so.1" present.  In this case, simply create a softlink by changing to the libGL directory, then type the line:
+
+sudo ln -s libGL.so.1 libGL.so  (and enter the admin password)
+
+whence the linker should now be able to find what it wants.  But if there is more than one file libGL.so present on your system, make sure you use the best one;  i.e. the one that uses accelerated graphics.
 
 
 
@@ -154,10 +172,10 @@ The GNU/linux executable must have access to ./libs unless your system already h
 
 	sokerban_gnu ( or sokerban_osx )
 
-Remember, the arrow keys control movements and the keyboard controls for view are:
+Remember, the WASD or arrow keys control movements and the keyboard controls for view are:
 * (c) closer
 * (f) further
-* (d) defaults
+* (0) defaults
 * (/) tilt up
 * (\\) tilt down
 
@@ -207,3 +225,5 @@ http://creativecommons.org/licenses/by-nc/3.0/legalcode/
 ----------------------------------------------
 ## Best Download Site for all my games:
 https://github.com/fastrgv?tab=repositories
+
+Tags:  sokoban, puzzle, soccer, football
