@@ -5,17 +5,20 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Li
 
 Click on the large tar.gz file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.1.6/sban7apr17.tar.gz
+
 
 
 WorldCupSokerban v3.1.6
 Changes (newest @ top):
 
-7apr17, v3.1.6
+**15apr17, v3.1.7**
+* Now saves complete game state on exit.  Thus, your progress through the levels of each puzzle file is preserved.
+* Better equilibration of sounds.
 
-    Improved error checking in shader package;
-    Removed OpenGL-deprecated functions that could cause aborts;
-    Revised directory structure, simplified codes;
+7apr17, v3.1.6
+* Improved error checking in shader package;
+* Removed OpenGL-deprecated functions that could cause aborts;
+* Revised directory structure, simplified codes;
 
 See revision history at end of file.
 what is special about this project?
