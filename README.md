@@ -5,35 +5,33 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Li
 
 Click on the large tar.gz file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.1.8/sban4may17.tar.gz
-
 
 
 # WorldCupSokerban
 ----------------------------------------------------------------
+## What's new:
 
-**23apr17, v3.1.8**
+**14may17, v3.1.9**
+* Fixed logic error that caused vanishing sokerballs during rapid play;
+* Paused key response during rolls;
+* Improved input response.
 
-* Includes precompiled solvers for both platforms [osx,linux].
-* Puzzle files are now sorted alphabetically for intuitive navigation.
-* An autosolver is now embedded within this application so that pressing the "=" key at any time initiates an attempt to solve the present state of the current puzzle.  See extended description below.
 
-
-**15apr17, v3.1.7**
-
-* Now saves complete game state on exit.  Thus, your progress through the levels of each puzzle file is preserved.
-* Better equilibration of sounds.
-* Precompiled solvers for both platforms are contained in soksolvers.tar.gz
+**02may17, v3.1.8**
+* Added step countdown during solve.
+* Made corrections to autosolvers.
 
 See complete revision history at end of file.
 
 
 ## WorldCupSokerban
-This is a soccer-themed, 3D sokoban puzzle game that includes 2 autosolvers.  It uses sokoban puzzle data in a common format.
+This is a soccer-themed, 3D sokoban puzzle game that includes 2 external solvers and 1 embedded solver.
 
 It has undo (u) and restart (r) functions.  Comes with many puzzle files, each typically having dozens of "levels".  The next (n) and previous (p) keys move between levels.  The (Lshft) and (Rshft) keys move between the different puzzle files (there are currently 60).  The (z) key creates a setpoint (reZero) so that subsequent restarts restore that setpoint.
 
 To move the "pusher" use the arrow keys.  The objective is to kick all the red and blue balls into the goal nets.  Notice that these strange soccer balls roll in two perpendicular directions only!
+
+And now the (=)-key triggers an embedded solver that helps you when you get stuck.
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
 
@@ -197,6 +195,19 @@ Tags:  sokoban, puzzle, soccer, football
 
 ## Older Revision History:
 
+**23apr17, v3.1.8**
+
+* Includes precompiled solvers for both platforms [osx,linux].
+* Puzzle files are now sorted alphabetically for intuitive navigation.
+* An autosolver is now embedded within this application so that pressing the "=" key at any time initiates an attempt to solve the present state of the current puzzle.  See extended description below.
+
+
+**15apr17, v3.1.7**
+
+* Now saves complete game state on exit.  Thus, your progress through the levels of each puzzle file is preserved.
+* Better equilibration of sounds.
+* Precompiled solvers for both platforms are contained in soksolvers.tar.gz
+
 
 **7apr17, v3.1.6**
 
@@ -277,6 +288,7 @@ Tags:  sokoban, puzzle, soccer, football
 
  * Transcribed from C++, this app is now written completely in the Ada language.
  * Revised pusher (thanks to Anders Widell).
+
 
 
 
