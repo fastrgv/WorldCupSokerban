@@ -13,6 +13,15 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.1.9/sban14may17
 ----------------------------------------------------------------
 ## What's new:
 
+**ver 3.2.0 -- 31oct17**
+* Updated build to use a) SFML v2.4.2;  b) AdaCore 2017;
+* Added console startup messages with OGL profile & version;
+* Removed unused libraries;  improved compile scripts;  
+* Made code corrections;  added step, push count;
+* Added IJKL-keys for movement as alternative to WASD, or arrow keys.
+* Extended time limit for live solver from 10 to 20 seconds so more puzzles are solvable interactively.
+
+
 **14may17, v3.1.9**
 * Fixed logic error that caused vanishing sokerballs during rapid play;
 * Paused key response during rolls;
