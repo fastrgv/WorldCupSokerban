@@ -1,24 +1,29 @@
 ![screenshot](https://github.com/fastrgv/WorldCupSokerban/blob/master/sokerban.png)
 
 # WorldCupSokerban
-This is a soccer-themed, 3D sokoban puzzle game that runs on Mac OS-X and GNU Linux
+This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X and GNU Linux
 
 Click on the large tar.gz file under releases for all source & binaries, or try this link:
 
 https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.0/sb31oct17.tar.gz
 
 
+
 # WorldCupSokerban
 ----------------------------------------------------------------
 ## What's new:
 
-**ver 3.2.0 -- 31oct17**
+
+**ver 3.2.0 -- 11nov17**
+
+* added prebuilt executables for msWindows;
+* added working build scripts for msWindows;
+
 * Updated build to use a) SFML v2.4.2;  b) AdaCore 2017;
 * Added console startup messages with OGL profile & version;
 * Removed unused libraries;  improved compile scripts;  
 * Made code corrections;  added step, push count;
-* Added IJKL-keys for movement as alternative to WASD, or arrow keys.
-* Extended time limit for live solver from 10 to 20 seconds so more puzzles are solvable interactively.
+* Added IJKL-keys for movement as alternative to WASD, arrow keys.
 
 
 **14may17, v3.1.9**
@@ -45,7 +50,7 @@ And now the (=)-key triggers an embedded solver that helps you when you get stuc
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
 
-Works on Macs running OS-X and PCs running GNU/Linux.
+Works on Macs running OSX and PCs running Windows or GNU/Linux.
 
 
 --------------------------
@@ -53,9 +58,9 @@ Works on Macs running OS-X and PCs running GNU/Linux.
  * laptop friendly;
  * user definable puzzles;
  * many predefined puzzles ranging from easy to nearly impossible;
- * both GNU/linux and OSX binaries;
+ * Windows, GNU/linux and OSX binaries included;
  * full source code;
- * supports high DPI mode on OS-X Retina displays;
+ * supports high DPI mode on OSX Retina displays;
  * uses SFML for the sounds, SDL2 for input & window management;
  * fully OpenGL 3.3 core profile Ada code;
  * includes 2 autosolvers;
@@ -76,9 +81,9 @@ Remember that there are still two external autosolvers without time constraints.
 
 ----------------------------------------------
 ## what is special about this project?
-Uses the Ada programming language and fully modern OpenGL methods with textures, shaders and uniforms.  Achieves version 3.3 core profile contexts, and compiles and runs on both GNU/Linux and Mac OS-X systems.  This project serves as a testbed for learning the complexities of modern OpenGL and GLSL.
+Uses the Ada programming language and fully modern OpenGL methods, with textures, shaders and uniforms.  Achieves version 3.3 core profile contexts.  Compiles and runs on Windows, GNU/Linux and Mac OSX systems.
 
-Focusing on portability and freedom, no coding effort or compromise has been made to accomodate proprietary operating systems.  It relies on a thin SDL2 binding from Dan Vazquez, a thin OpenGL binding, a PNG reader by Stephen Sanguine, and SFML-Audio (because of its elegant audio interface).
+Focusing on portability and open source freedom, this project relies on a thin SDL2 binding from Dan Vazquez, a thin OpenGL binding from "Lumen", a PNG reader by Stephen Sanguine, and SFML-Audio (because of its elegant audio interface).
 
 
 
@@ -86,23 +91,31 @@ Focusing on portability and freedom, no coding effort or compromise has been mad
 ## Build Requirements:
  * a recent GNAT Ada compiler;
  * OpenGL 3.3 (or better) and a graphics card that supports it.
- * Xcode g++ compiler, if using OS-X
+ * Xcode g++ compiler, if using OSX
 
 
 ## Build instructions:
 
 ccc.sh is the build script for the two autosolvers "puller" and "ibox".  Just type "ccc.sh puller" or "ccc.sh ibox" to compile on any platform, assuming the presence of a GNAT Ada compiler.
 
-Two [pre-compiled] game executables are provided, one for gnu/linux and one for OS-X.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
+Three [pre-compiled] game executables are provided, one for Windows, one for gnu/linux and one for OSX.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
 SDL2, SFML, FLAC, ogg, vorbis, & openal.
 
-Two build scripts are described;  and due to a recent script change, a linux build machine need not have a C++ compiler installed.  Only GNAT is required.
+Similarly, the Windows binary, sokerban.exe, needs the DLLs collocated.
+
+Three build scripts are described;  and due to a recent script change, a linux build machine need not have a C++ compiler installed.  Only GNAT is required.
+
+
+-------------------------------------------------------
+msWin32 => wcmp.bat
+
+build script that requires libraries included in ./libs/win/.
 
 
 -------------------------------------------------------
 MacOSX:
 
-<ocmpss.sh>:  build script for generating a portable executable that will run on most recent OS-X platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
+<ocmpss.sh>:  build script for generating a portable executable that will run on most recent OSX platforms whether or not they have non-standard libraries such as GLEW, SDL2, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
 
 ------------------------------------------------------
 GNU/Linux:  
@@ -128,7 +141,7 @@ whence the linker should now be able to find what it wants.  But if there is mor
 -----------------------
 ## Running:
 
-Requires OS-X or GNU/linux with a graphics card that supports OpenGL version 3.3;
+Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
 Unzip the archive and you will see a new directory appear, that you may rename.
 
@@ -143,7 +156,7 @@ The install-directory should contain subdirectories named "data", "libs", and "g
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
 
-	sokerban_gnu ( or sokerban_osx )
+	sokerban_gnu ( or sokerban_osx, or sokerban.exe )
 
 Remember, the WASD or arrow keys control movements and the keyboard controls for view are:
 * (c) closer
@@ -298,6 +311,7 @@ Tags:  sokoban, puzzle, soccer, football
 
  * Transcribed from C++, this app is now written completely in the Ada language.
  * Revised pusher (thanks to Anders Widell).
+
 
 
 
