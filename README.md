@@ -14,6 +14,15 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.0/sb11nov17.t
 ## What's new:
 
 
+**ver 3.2.1 -- 1apr18**
+
+* Uninverted, improved font file;
+* Improved function names in matutils;
+* Too many undos no longer aborts;
+* Added GPR build scripts;
+* Improved & simplified OSX builds;
+
+
 **ver 3.2.0 -- 11nov17**
 
 * added prebuilt executables for msWindows;
