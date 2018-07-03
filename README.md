@@ -9,43 +9,22 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.1/sb1apr18.ta
 
 
 
+
 # WorldCupSokerban
 ----------------------------------------------------------------
+
 ## What's new:
 
 
-**ver 3.2.1 -- 1apr18**
+**ver 3.2.2 -- 04jul18**
 
-* Uninverted, improved font file;
-* Improved function names in matutils;
-* Too many undos no longer aborts;
-* Added GPR build scripts;
-* Improved & simplified OSX builds;
-
-
-**ver 3.2.0 -- 11nov17**
-
-* added prebuilt executables for msWindows;
-* added working build scripts for msWindows;
-
-* Updated build to use a) SFML v2.4.2;  b) AdaCore 2017;
-* Added console startup messages with OGL profile & version;
-* Removed unused libraries;  improved compile scripts;  
-* Made code corrections;  added step, push count;
-* Added IJKL-keys for movement as alternative to WASD, arrow keys.
+* Added & improved 2nd built-in solver initiated with numeric-keypad "=" key.  This might solve problems that stump the 1st solver [using the normal keyboard "=" key].
+* Added a "Solution not found" message when a built-in solver fails within 10 seconds.
+* Put Windows DLLs, EXEs into ./binw32/
+* Updated AdaPng, AdaZLib;
 
 
-**14may17, v3.1.9**
-* Fixed logic error that caused vanishing sokerballs during rapid play;
-* Paused key response during rolls;
-* Improved input response.
-
-
-**02may17, v3.1.8**
-* Added step countdown during solve.
-* Made corrections to autosolvers.
-
-See complete revision history at end of file.
+## See complete revision history at end of file.
 
 
 ## WorldCupSokerban
@@ -76,7 +55,9 @@ Works on Macs running OSX and PCs running Windows or GNU/Linux.
 
 ----------------------------------------------
 ## Embedded Autosolver Function
-An autosolver (ibox) is now embedded within this application so that pressing the equal-key ("=") at any time initiates an attempt to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the equal-key to single-step toward the solution.  Otherwise you will see no such prompt.
+Two autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the equal-key to single-step toward the solution.  Otherwise you will see no such prompt.
+
+Similarly, the 2nd alternate solver is initiated with the numeric keypad ("=")-key.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
@@ -85,6 +66,22 @@ Embedded autosolver failure might imply the present state of the puzzle is impos
 ## External Autosolvers
 Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "puller" or "ibox".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
 
+The command to build them both [on OSX/linux] is simply:
+	ccc.sh ibox
+	ccc.sh puller
+
+and on Windows:
+	ccc.bat ibox
+	ccc.bat puller
+
+To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
+
+EG on windows type:
+	binw32\puller games\pico_22.sok 22 3
+	...to solve the 3rd level in file pico_22.sok.
+
+EG on OSX type:
+	puller_osx games/pico_22.sok 22 3
 
 
 
@@ -96,13 +93,73 @@ Focusing on portability and open source freedom, this project relies on a thin S
 
 
 
-----------------------------------------------
+-----------------------
+## Setup & Running:
+
+Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
+
+Unzip the archive.
+
+You will see a new directory appear, that you may rename.
+
+Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
+
+Windows users type binw32\sokerban.exe from the installation directory.
+
+Linux users can type sokerban_gnu or double click the icon for sokerban_gnu in file manager.
+
+Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the install-directory, and typing sokerban_osx on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
+
+The install-directory should contain subdirectories named "data", "libs", and "games".
+
+
+The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
+
+	sokerban_gnu ( or sokerban_osx, or sokerban.exe )
+
+Remember, the WASD or arrow keys control movements.
+
+The keyboard controls for view are:
+* (c) closer
+* (f) further
+* (0) defaults
+* (/) tilt up
+* (\\) tilt down
+* (=) try to autosolve
+* (h) HELP
+
+Other controls, as indicated by the help screen:
+* (esc) to quit
+* (u) to undo
+* (r) restart
+* (n) next-level in current file
+* (p) previous-level in current file
+* (L-shift) previous file
+* (R-shift) next file
+* (z) reZero the setpoint
+
+Note also that a specific sokoban file may be tested by naming it on the terminal window command line with the following syntax:
+
+	sokerban sokfilepath maxlevels startlevel
+
+where sokerban can be sokerban_gnu, sokerban_osx or sokerban.exe.
+
+For example on linux you could type
+
+	"sokerban_gnu games/original_50.sok 50 2"
+
+to tackle level 2 from the original_50 sokoban file.  In this single-file mode, you can still use the next-level(n) & previous-level(p) keys, however, the next/previous files (R-shift/L-shift) keys are disabled.
+
+
+================================================================
 ## Build Requirements:
  * a recent GNAT Ada compiler;
  * OpenGL 3.3 (or better) and a graphics card that supports it.
  * Xcode g++ compiler, if using OSX
 
 
+
+================================================================
 ## Build instructions:
 
 ccc.sh is the build script for the two autosolvers "puller" and "ibox".  Just type "ccc.sh puller" or "ccc.sh ibox" to compile on any platform, assuming the presence of a GNAT Ada compiler.
@@ -147,40 +204,6 @@ whence the linker should now be able to find what it wants.  But if there is mor
 
 
 
------------------------
-## Running:
-
-Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
-
-Unzip the archive and you will see a new directory appear, that you may rename.
-
-Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
-
-Linux users can also double click the icon for sokerban_gnu in file manager.
-
-Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the install-directory, and typing sokerban_osx on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
-
-The install-directory should contain subdirectories named "data", "libs", and "games".
-
-
-The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
-
-	sokerban_gnu ( or sokerban_osx, or sokerban.exe )
-
-Remember, the WASD or arrow keys control movements and the keyboard controls for view are:
-* (c) closer
-* (f) further
-* (0) defaults
-* (/) tilt up
-* (\\) tilt down
-* (=) try to autosolve
-
-
-================================================================
-
-I anticipate some problems with the newly attached autosolver so please report them and any questions or comments to fastrgv@gmail.com
-
-================================================================
 
 
 ---------------------------------
@@ -226,6 +249,38 @@ Tags:  sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+**ver 3.2.1 -- 1apr18**
+
+* Uninverted, improved font file;
+* Improved function names in matutils;
+* Too many undos no longer aborts;
+* Added GPR build scripts;
+* Improved & simplified OSX builds;
+
+
+**ver 3.2.0 -- 11nov17**
+
+* added prebuilt executables for msWindows;
+* added working build scripts for msWindows;
+
+* Updated build to use a) SFML v2.4.2;  b) AdaCore 2017;
+* Added console startup messages with OGL profile & version;
+* Removed unused libraries;  improved compile scripts;  
+* Made code corrections;  added step, push count;
+* Added IJKL-keys for movement as alternative to WASD, arrow keys.
+
+
+**14may17, v3.1.9**
+* Fixed logic error that caused vanishing sokerballs during rapid play;
+* Paused key response during rolls;
+* Improved input response.
+
+
+**02may17, v3.1.8**
+* Added step countdown during solve.
+* Made corrections to autosolvers.
+
 
 **23apr17, v3.1.8**
 
