@@ -15,6 +15,10 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.2/sb4jul18.ta
 
 ## What's new:
 
+**ver 3.2.3 -- 08jul18**
+
+* Updated to using SDL v2.0.7;
+* Corrected code to handle DOS-formatted puzzle files.
 
 **ver 3.2.2 -- 04jul18**
 
