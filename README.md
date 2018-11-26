@@ -75,24 +75,24 @@ Thus, you can give yourself a headstart toward a correct solution by limited use
 Embedded autosolver failure might imply the present state of the puzzle is impossible to solve, or simply that the autosolver failed due to time constraint, or insufficient capability.
 
 ## External Autosolvers
-Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "puller" or "ibox".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
+Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "ipuller3" or "ibox3".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
 
 The command to build them both [on OSX/linux] is simply:
-	ccc.sh ibox
-	ccc.sh puller
+	ccc.sh ibox3
+	ccc.sh ipuller3
 
 and on Windows:
-	ccc.bat ibox
-	ccc.bat puller
+	ccc.bat ibox3
+	ccc.bat ipuller3
 
 To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
 
 EG on windows type:
-	binw32\puller games\pico_22.sok 22 3
+	binw32\ipuller3 games\pico_22.sok 22 3
 	...to solve the 3rd level in file pico_22.sok.
 
 EG on OSX type:
-	puller_osx games/pico_22.sok 22 3
+	ipuller3_osx games/pico_22.sok 22 3
 
 
 
