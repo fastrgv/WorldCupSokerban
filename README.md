@@ -15,6 +15,13 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.3/sb8jul18.ta
 
 ## What's new:
 
+**ver 3.2.4 -- 26nov18**
+
+* Now using sdl v207 uniformly on all platforms;
+* Now using sfml v250 uniformly;
+* Updated all sokoban solvers to enhance robustness & efficient solutions;
+
+
 **ver 3.2.3 -- 08jul18**
 
 * Updated to using SDL v2.0.7;
