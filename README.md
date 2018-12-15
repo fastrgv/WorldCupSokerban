@@ -18,6 +18,13 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.4/sb28nov18ta
 
 ## What's new:
 
+**ver 3.2.5 -- 15dec18**
+
+* Updated to sdl v208;
+* Improved linux build for better portability;
+* Now distributed as zip file;
+
+
 **ver 3.2.4 -- 26nov18**
 
 * Now using sdl v207 uniformly on all platforms;
