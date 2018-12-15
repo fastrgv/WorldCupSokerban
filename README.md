@@ -7,6 +7,9 @@ Click on the large tar.gz file under releases for all source & binaries, or try 
 
 https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.4/sb28nov18.tar.gz
 
+or on Windows use:
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.4/sb28nov18tar.zip
+
 
 
 
