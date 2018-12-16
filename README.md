@@ -11,37 +11,23 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.5/sban15dec18
 
 
 
+
 # WorldCupSokerban
 ----------------------------------------------------------------
 
 ## What's new:
 
-**ver 3.2.5 -- 15dec18**
+
+**ver 3.2.5 -- 17dec18**
 
 * Updated to sdl v208;
 * Improved linux build for better portability;
-* Now distributed as zip file;
 
 
 **ver 3.2.4 -- 26nov18**
 
-* Now using sdl v207 uniformly on all platforms;
 * Now using sfml v250 uniformly;
 * Updated all sokoban solvers to enhance robustness & efficient solutions;
-
-
-**ver 3.2.3 -- 08jul18**
-
-* Updated to using SDL v2.0.7;
-* Corrected code to handle DOS-formatted puzzle files.
-
-**ver 3.2.2 -- 04jul18**
-
-* Added & improved 2nd built-in solver initiated with numeric-keypad "=" key.  This might solve problems that stump the 1st solver [using the normal keyboard "=" key].
-* Added a "Solution not found" message when a built-in solver fails within 10 seconds.
-* Put Windows DLLs, EXEs into ./binw32/
-* Updated AdaPng, AdaZLib;
-
 
 ## See complete revision history at end of file.
 
@@ -96,11 +82,11 @@ and on Windows:
 To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
 
 EG on windows type:
-	binw32\ipuller3 games\pico_22.sok 22 3
+	binw32\puller games\pico_22.sok 22 3
 	...to solve the 3rd level in file pico_22.sok.
 
 EG on OSX type:
-	ipuller3_osx games/pico_22.sok 22 3
+	puller_osx games/pico_22.sok 22 3
 
 
 
@@ -114,6 +100,10 @@ Focusing on portability and open source freedom, this project relies on a thin S
 
 -----------------------
 ## Setup & Running:
+
+Windows users should read "windows-setup.txt".
+Mac users see "osx-setup.txt".
+
 
 Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
@@ -136,13 +126,15 @@ The install-directory should contain subdirectories named "data", "libs", and "g
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
 
-	sokerban_gnu ( or sokerban_osx, or sokerban.exe )
+	sokerban_gnu ( or sokerban_osx, or binw32\sokerban.exe )
 
 Remember, the WASD or arrow keys control movements.
 
-The keyboard controls for view are:
-* (c) closer
-* (f) further
+View Controls:
+Your mouse can pan & zoom. 
+Also, the keyboard controls are:
+* (c) zoom Closer
+* (f) zoom Further
 * (0) defaults
 * (/) tilt up
 * (\\) tilt down
@@ -183,7 +175,7 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ================================================================
 ## Build instructions:
 
-ccc.sh is the build script for the two autosolvers "puller" and "ibox".  Just type "ccc.sh puller" or "ccc.sh ibox" to compile on any platform, assuming the presence of a GNAT Ada compiler.
+ccc.sh is the build script for the two autosolvers "ipuller3" and "ibox3".  Just type "ccc.sh ipuller3" or "ccc.sh ibox3" to compile on any platform, assuming the presence of a GNAT Ada compiler.
 
 Three [pre-compiled] game executables are provided, one for Windows, one for gnu/linux and one for OSX.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
 SDL2, SFML, FLAC, ogg, vorbis, & openal.
@@ -270,6 +262,22 @@ Tags:  sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+
+**ver 3.2.3 -- 08jul18**
+
+* Updated to using SDL v2.0.7;
+* Corrected code to handle DOS-formatted resume & puzzle files.
+
+
+**ver 3.2.2 -- 04jul18**
+
+* Added & improved 2nd built-in solver initiated with numeric-keypad "=" key.  This might solve problems that stump the 1st solver [using the normal keyboard "=" key].
+* Added a "Solution not found" message when a built-in solver fails within 10 seconds.
+* Put Windows DLLs, EXEs into ./binw32/
+* Updated AdaPng, AdaZLib;
+
+
 
 **ver 3.2.1 -- 1apr18**
 
@@ -396,6 +404,8 @@ Tags:  sokoban, puzzle, soccer, football
 
  * Transcribed from C++, this app is now written completely in the Ada language.
  * Revised pusher (thanks to Anders Widell).
+
+
 
 
 
