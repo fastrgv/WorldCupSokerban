@@ -17,6 +17,11 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.6/sb17dec18.t
 
 ## What's new:
 
+**ver 3.2.7 -- 7jan19**
+
+* Added closeWindow handler;
+* Now deliver 7z archives;
+* Minor tech improvements;
 
 **ver 3.2.5 -- 17dec18**
 
