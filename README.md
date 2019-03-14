@@ -114,9 +114,7 @@ Mac users see "osx-setup.txt".
 
 Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
-Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this;  but so does the intrinsic command "tar -xf [filename].tar.gz", which extracts everything into the current directory.
-
-Windows users may see some error messages (that may be ignored) pertaining to directory links.  Directory links are needed only on OSX & Linux.
+Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
 
 You will see a new directory appear, that you may rename.
 
