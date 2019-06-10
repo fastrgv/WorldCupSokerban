@@ -19,6 +19,12 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.7/sb7jan19.7z
 
 ## What's new:
 
+**ver 3.2.8 -- 11jun19**
+
+* Added separate, more readable, Help screen;  high contrast font;
+* Added tilting pusher;
+* Corrected & improved autosolver robustness;
+
 **ver 3.2.7 -- 7jan19**
 
 * Added closeWindow handler;
@@ -143,7 +149,8 @@ Also, the keyboard controls are:
 * (0) defaults
 * (/) tilt up
 * (\\) tilt down
-* (=) try to autosolve
+* (=) try to autosolve (method #1)
+* (.) try to autosolve (method #2)
 * (h) HELP
 
 Other controls, as indicated by the help screen:
