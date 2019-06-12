@@ -5,7 +5,7 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X a
 
 Click on the large 7zip file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.8/sb11jun19.7z
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.8/sb12jun19.7z
 
 
 
@@ -24,6 +24,7 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.8/sb11jun19.7
 * Added separate, more readable, Help screen;  high contrast font;
 * Added tilting pusher;
 * Corrected & improved autosolver robustness;
+* Added female avatar.
 
 **ver 3.2.7 -- 7jan19**
 
