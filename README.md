@@ -1,4 +1,6 @@
-![screenshot](https://github.com/fastrgv/WorldCupSokerban/blob/master/sokerban.png)
+![screenshot](https://github.com/fastrgv/WorldCupSokerban/blob/master/female.jpg)
+
+
 
 # WorldCupSokerban
 This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X and GNU Linux
