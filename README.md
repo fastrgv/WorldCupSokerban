@@ -15,35 +15,19 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.8/sb12jun19.7
 
 
 
-
 # WorldCupSokerban
 ----------------------------------------------------------------
 
 ## What's new:
 
-**ver 3.2.8 -- 11jun19**
 
-* Added separate, more readable, Help screen;  high contrast font;
-* Added tilting pusher;
-* Corrected & improved autosolver robustness;
-* Added female avatar.
+**ver 3.2.9 -- 15jul19**
 
-**ver 3.2.7 -- 7jan19**
+* Updated SDL2 to version 2.0.9
+* Updated Ada binding to SDL2;
+* Added user-controlled autosolver-timeout;
+* Corrected error in single-puzzle-file commandline test mode;
 
-* Added closeWindow handler;
-* Now deliver 7z archives;
-* Minor tech improvements;
-
-**ver 3.2.5 -- 17dec18**
-
-* Updated to sdl v208;
-* Improved linux build for better portability;
-
-
-**ver 3.2.4 -- 26nov18**
-
-* Now using sfml v250 uniformly;
-* Updated all sokoban solvers to enhance robustness & efficient solutions;
 
 ## See complete revision history at end of file.
 
@@ -53,9 +37,9 @@ This is a soccer-themed, 3D sokoban puzzle game that includes 2 external solvers
 
 It has undo (u) and restart (r) functions.  Comes with many puzzle files, each typically having dozens of "levels".  The next (n) and previous (p) keys move between levels.  The (Lshft) and (Rshft) keys move between the different puzzle files (there are currently 60).  The (z) key creates a setpoint (reZero) so that subsequent restarts restore that setpoint.
 
-To move the "pusher" use the arrow keys.  The objective is to kick all the red and blue balls into the goal nets.  Notice that these strange soccer balls roll in two perpendicular directions only!
+To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective is to kick all the red and blue balls into the goal nets.  Notice that these strange soccer balls roll in two perpendicular directions only!
 
-And now the (=)-key triggers an embedded solver that helps you when you get stuck.
+The (=)-key or the (.)-key triggers an embedded solver that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution.
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
 
@@ -76,13 +60,16 @@ Works on Macs running OSX and PCs running Windows or GNU/Linux.
 
 ----------------------------------------------
 ## Embedded Autosolver Function
-Two autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the equal-key to single-step toward the solution.  Otherwise you will see no such prompt.
+Two autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse puzzles.
 
-Similarly, the 2nd alternate solver is initiated with the numeric keypad ("=")-key.
+Similarly, the 2nd alternate solver is initiated with the (".")-key.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
 Embedded autosolver failure might imply the present state of the puzzle is impossible to solve, or simply that the autosolver failed due to time constraint, or insufficient capability.
+
+Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using a command-line argument. 
+
 
 ## External Autosolvers
 Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "ipuller3" or "ibox3".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
@@ -108,9 +95,9 @@ EG on OSX type:
 
 ----------------------------------------------
 ## what is special about this project?
-Uses the Ada programming language and fully modern OpenGL methods, with textures, shaders and uniforms.  Achieves version 3.3 core profile contexts.  Compiles and runs on Windows, GNU/Linux and Mac OSX systems.
+It uses the Ada programming language and modern OpenGL methods, with textures, shaders and uniforms.  Compiles and runs on Windows, GNU/Linux and Mac OSX systems.
 
-Focusing on portability and open source freedom, this project relies on a thin SDL2 binding from Dan Vazquez, a thin OpenGL binding from "Lumen", a PNG reader by Stephen Sanguine, and SFML-Audio (because of its elegant audio interface).
+Focusing on portability, transparency, and open source freedom, this project relies exclusively on F.O.S.S. tools:  a thin SDL2 binding, a thin OpenGL binding, a PNG reader by Stephen Sanguine & Dimitry Anisimkov, SFML-Audio with a homebrew binding, and a GNAT compiler.
 
 
 
@@ -124,6 +111,8 @@ Mac users see "osx-setup.txt".
 Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
 Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
+
+Windows users may see some error messages (that may be ignored) pertaining to directory links.  Directory links are needed only on OSX & Linux.
 
 You will see a new directory appear, that you may rename.
 
@@ -142,7 +131,7 @@ The GNU/linux executable must have access to ./libs unless your system already h
 
 	sokerban_gnu ( or sokerban_osx, or binw32\sokerban.exe )
 
-Remember, the WASD or arrow keys control movements.
+Remember, the WASD or IJKL or arrow keys control movements.
 
 View Controls:
 Your mouse can pan & zoom. 
@@ -155,6 +144,8 @@ Also, the keyboard controls are:
 * (=) try to autosolve (method #1)
 * (.) try to autosolve (method #2)
 * (h) HELP
+* (b) Male Avatar (Boy)
+* (g) Female Avatar (Girl)
 
 Other controls, as indicated by the help screen:
 * (esc) to quit
@@ -277,6 +268,33 @@ Tags:  sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+**ver 3.2.8 -- 12jun19**
+
+* Added female avatar;
+* Added separate, more readable, Help screen;  high contrast font;
+* Added tilting pusher;
+* Corrected & improved autosolver robustness;
+
+
+**ver 3.2.7 -- 7jan19**
+
+* Added closeWindow handler;
+* Now deliver 7z archives;
+* Minor tech improvements;
+
+
+**ver 3.2.6 -- 17dec18**
+
+* Updated to sdl v208;
+* Improved linux build for better portability;
+* Improved instructions for Windows tarball handling;
+
+
+**ver 3.2.4 -- 26nov18**
+
+* Now using sfml v250 uniformly;
+* Updated all sokoban solvers to enhance robustness & efficient solutions;
 
 
 **ver 3.2.3 -- 08jul18**
@@ -419,8 +437,6 @@ Tags:  sokoban, puzzle, soccer, football
 
  * Transcribed from C++, this app is now written completely in the Ada language.
  * Revised pusher (thanks to Anders Widell).
-
-
 
 
 
