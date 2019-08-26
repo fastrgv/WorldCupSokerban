@@ -15,10 +15,18 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.2.9/sb15jul19.7
 
 
 
+
 # WorldCupSokerban
 ----------------------------------------------------------------
 
 ## What's new:
+
+
+**ver 3.3.0 -- 27aug19**
+
+* Updated external & embedded autosolvers.  In particular, the alternate solver is faster but its solutions are suboptimal.
+* Improved embedded solver behavior.
+* Restored more legible font for on screen messages.
 
 
 **ver 3.2.9 -- 15jul19**
@@ -72,24 +80,24 @@ Finally, a single command-line argument (decimal float) specifies a persistent t
 
 
 ## External Autosolvers
-Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "ipuller3" or "ibox3".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
+Remember that there are still two external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "iplr3r" or "ibox3r".  There are many large or sparse [lishout] puzzles these solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
 
 The command to build them both [on OSX/linux] is simply:
-	ccc.sh ibox3
-	ccc.sh ipuller3
+	ccc.sh ibox3r
+	ccc.sh iplr3r
 
 and on Windows:
-	ccc.bat ibox3
-	ccc.bat ipuller3
+	ccc.bat ibox3r
+	ccc.bat iplr3r
 
 To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
 
 EG on windows type:
-	binw32\puller games\pico_22.sok 22 3
+	binw32\iplr3r games\pico_22.sok 22 3
 	...to solve the 3rd level in file pico_22.sok.
 
 EG on OSX type:
-	puller_osx games/pico_22.sok 22 3
+	iplr3r_osx games/pico_22.sok 22 3
 
 
 
@@ -181,7 +189,7 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ================================================================
 ## Build instructions:
 
-ccc.sh is the build script for the two autosolvers "ipuller3" and "ibox3".  Just type "ccc.sh ipuller3" or "ccc.sh ibox3" to compile on any platform, assuming the presence of a GNAT Ada compiler.
+ccc.sh is the build script for the two autosolvers "iplr3r" and "ibox3r".  Just type "ccc.sh iplr3r" or "ccc.sh ibox3r" to compile on any platform, assuming the presence of a GNAT Ada compiler.
 
 Three [pre-compiled] game executables are provided, one for Windows, one for gnu/linux and one for OSX.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
 SDL2, SFML, FLAC, ogg, vorbis, & openal.
