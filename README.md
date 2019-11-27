@@ -20,13 +20,9 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.3.0/sb27aug19.7
 ----------------------------------------------------------------
 
 
-26nov2019...URGENT NOTICE TO LINUX USERS:
-Due to a library incompatability, you MUST delete all
-libm*.* files from the directory ~/libs/gnu/ before this
-puzzle game will run properly.  Sorry for the inconvenience.
-The next delivery will have these library files removed.
+**ver 3.3.0 -- 27nov19**
 
-
+* Repaired a library problem with GNU/Linux build that limited portability.
 
 
 ## What's new:
