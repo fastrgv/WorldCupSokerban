@@ -19,13 +19,13 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.3.0/sb27nov19.7
 # WorldCupSokerban
 ----------------------------------------------------------------
 
+## What's new:
+
 
 **ver 3.3.0 -- 27nov19**
 
 * Repaired a library problem with GNU/Linux build that limited portability.
 
-
-## What's new:
 
 
 **ver 3.3.0 -- 27aug19**
