@@ -31,22 +31,6 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.3.0/sb27nov19.7
 * Repaired a library problem with GNU/Linux build that limited portability.
 
 
-
-**ver 3.3.0 -- 27aug19**
-
-* Updated external & embedded autosolvers.  In particular, the alternate solver is faster but its solutions are suboptimal.
-* Improved embedded solver behavior.
-* Restored more legible font for on screen messages.
-
-
-**ver 3.2.9 -- 15jul19**
-
-* Updated SDL2 to version 2.0.9
-* Updated Ada binding to SDL2;
-* Added user-controlled autosolver-timeout;
-* Corrected error in single-puzzle-file commandline test mode;
-
-
 ## See complete revision history at end of file.
 
 
@@ -286,6 +270,24 @@ Tags:  sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+
+
+**ver 3.3.0 -- 27aug19**
+
+* Updated external & embedded autosolvers.  In particular, the alternate solver is faster but its solutions are suboptimal.
+* Improved embedded solver behavior.
+* Restored more legible font for on screen messages.
+
+
+**ver 3.2.9 -- 15jul19**
+
+* Updated SDL2 to version 2.0.9
+* Updated Ada binding to SDL2;
+* Added user-controlled autosolver-timeout;
+* Corrected error in single-puzzle-file commandline test mode;
+
+
 
 **ver 3.2.8 -- 12jun19**
 
