@@ -20,6 +20,11 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.4.0/sb15jan20.7
 
 ## What's new:
 
+**ver 3.5.0 -- 20jan20**
+
+* Significantly improved linux portability;
+
+
 **ver 3.4.0 -- 03jan20**
 
 * Converted to GLFW3;
