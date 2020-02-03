@@ -49,7 +49,7 @@ The (=)-key or the (.)-key triggers an embedded solver that helps you when you g
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
 
-Works on Macs running OSX and PCs running Windows or GNU/Linux.
+Works on Macs running OSX and PCs running Windows or GNU/Linux. New Linux binary now runs on several linux distros!
 
 
 --------------------------
