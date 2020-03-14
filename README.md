@@ -20,6 +20,12 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.0/sb20jan20.7
 
 ## What's new:
 
+**ver 3.5.1 -- 14mar20**
+
+* Fixed broken Windows executables;
+* Linux build now uses Ada tasking to remove kick sound latency.
+
+
 **ver 3.5.0 -- 20jan20**
 
 * Significantly improved linux portability;
