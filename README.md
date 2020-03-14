@@ -7,7 +7,7 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X a
 
 Click on the large 7zip file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.0/sb20jan20.7z
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.1/sb14mar20.7z
 
 
 
@@ -23,7 +23,7 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.0/sb20jan20.7
 **ver 3.5.1 -- 14mar20**
 
 * Fixed broken Windows executables;
-* Linux build now uses Ada tasking to remove kick sound latency.
+* Linux build now uses Ada tasking to reduce kick sound latency.
 
 
 **ver 3.5.0 -- 20jan20**
