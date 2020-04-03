@@ -20,6 +20,11 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.1/sb14mar20.7
 
 ## What's new:
 
+**ver 3.5.2 -- 4apr20**
+
+* Improved linux sound system with no latency:  an Ada WAV-player using an Ada binding to the ALSA sound library.
+
+
 **ver 3.5.1 -- 14mar20**
 
 * Fixed broken Windows executables;
