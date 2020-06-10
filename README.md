@@ -20,6 +20,12 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.1/sb4apr20.7z
 
 ## What's new:
 
+**ver 3.5.3 -- 10jun20**
+
+* Improved coding to read WAV file while "protected".
+* Added onscreen feedback message when saving setpoint.
+
+
 **ver 3.5.2 -- 4apr20**
 
 * Improved linux sound system with no latency:  an Ada WAV-player using an Ada binding to the ALSA sound library.
