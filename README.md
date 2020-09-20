@@ -19,35 +19,35 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.3/sb10jun20.7
 
 ## What's new:
 
-**ver 3.5.3 -- 10jun20**
+**ver 3.5.4 -- 20sep20**
+* Updated all glfw libs to v3.3.2.
+* Added "sokerban.bat" for Windows users.
 
+
+
+**ver 3.5.3 -- 10jun20**
 * Improved coding to read WAV file while "protected".
 * Added onscreen feedback message when saving setpoint.
 
 
 **ver 3.5.2 -- 4apr20**
-
 * Improved linux sound system with no latency:  an Ada WAV-player using an Ada binding to the ALSA sound library.
 
 
 **ver 3.5.1 -- 14mar20**
-
 * Fixed broken Windows executables;
 * Linux build now uses Ada tasking to reduce kick sound latency.
 
 
 **ver 3.5.0 -- 20jan20**
-
 * Significantly improved linux portability;
 
 
 **ver 3.4.0 -- 03jan20**
-
 * Converted to GLFW3;
 * Improved compile scripts;
 
 **ver 3.3.0 -- 27nov19**
-
 * Repaired a library problem with GNU/Linux build that limited portability.
 
 
@@ -134,13 +134,11 @@ Requires Windows, OSX or GNU/linux with a graphics card that supports OpenGL ver
 
 Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
 
-Windows users may see some error messages (that may be ignored) pertaining to directory links.  Directory links are needed only on OSX & Linux.
-
 You will see a new directory appear, that you may rename.
 
 Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
 
-Windows users type binw32\sokerban.exe from the installation directory.
+Windows users type "sokerban.bat" from the installation directory.
 
 Linux users can type sokerban_gnu or double click the icon for sokerban_gnu in file manager.
 
