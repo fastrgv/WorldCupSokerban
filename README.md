@@ -19,6 +19,10 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.4/sb20sep20.7
 
 ## What's new:
 
+**ver 3.5.5 -- 27oct20**
+* Elliminated SFML-audio entirely.
+* Greatly simplified build process.
+
 **ver 3.5.4 -- 20sep20**
 * Updated all glfw libs to v3.3.2.
 * Added "sokerban.bat" for Windows users.
