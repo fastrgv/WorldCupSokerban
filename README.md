@@ -152,7 +152,7 @@ The install-directory should contain subdirectories named "data", "libs", and "g
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
 
-	sokerban_gnu ( or sokerban_osx, or binw32\sokerban.exe )
+	sokerban_gnu ( or sokerban_osx, or sokerban.bat )
 
 Remember, the WASD or IJKL or arrow keys control movements.
 
@@ -212,7 +212,7 @@ ccc.sh is the build script for the two autosolvers "iplr3r" and "ibox3r".  Just 
 Three [pre-compiled] game executables are provided, one for Windows, one for gnu/linux and one for OSX.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
 GLFW3, SFML, FLAC, ogg, vorbis, & openal.
 
-Similarly, the Windows binary, sokerban.exe, needs the DLLs collocated.
+Similarly, the Windows binary, .\binw64\sokerban.exe, needs the DLLs collocated.
 
 Three build scripts are described;  and due to a recent script change, a linux build machine need not have a C++ compiler installed.  Only GNAT is required.
 
