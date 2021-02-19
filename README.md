@@ -12,9 +12,9 @@ https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.6/sb20feb21.7
 
 
 
+===================================================================================
 
-
-soker-ban girl:
+soker-ban girl video link:
 <https://youtu.be/No_ElhmToqw>
 
 # World Cup Sokerban
