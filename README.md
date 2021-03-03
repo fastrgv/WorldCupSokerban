@@ -167,8 +167,9 @@ Also, the keyboard controls are:
 * (0) defaults
 * (/) tilt up
 * (\\) tilt down
-* (=) try to autosolve (method #1)
-* (.) try to autosolve (method #2)
+* (=) try to autosolve (method #1 = iplr3r)
+* (.) try to autosolve (method #2 = hbox4)
+* (,) try to autosolve (method #3 = ibox3r)
 * (h) HELP
 * (b) Male Avatar (Boy)
 * (g) Female Avatar (Girl)
