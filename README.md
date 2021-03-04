@@ -68,7 +68,7 @@ Works on Macs running OSX and PCs running Windows or GNU/Linux.
  * supports high DPI mode on OSX Retina displays;
  * uses OpenAL for the sounds, GLFW3 for input & window management;
  * fully OpenGL 3.3 core profile Ada code;
- * includes 2 "live" embedded autosolvers that help you to learn;
+ * includes 3 "live" embedded autosolvers that help you to learn;
 
 ----------------------------------------------
 ## Embedded Autosolver Function
