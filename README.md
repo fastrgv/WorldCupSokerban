@@ -127,7 +127,8 @@ Mac users see "osx-setup.txt".
 
 Requires Windows, OSX(>=10.13) or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
-Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
+Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
+
 Open a commandline terminal, and cd to the install directory.
 
 ------------------------------------------------------------------------
