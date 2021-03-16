@@ -9,7 +9,7 @@ Click on the large 7zip file under releases for all source & binaries, or try th
 
 https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.5.6/sb4mar21.7z
 
-
+Type "7z x filename" to extract the archive.
 
 
 ===================================================================================
