@@ -144,6 +144,11 @@ Windows users type "sokerban.bat" from the installation directory.
 Linux users can type "sokerban_gnu" or double click the icon for sokerban_gnu in file manager.
 
 The distributed linux executables require glibc v2.14 or newer.  That means if your distribution is older, it might not run, and you will need to recompile.
+ Or you can try running the windows EXEs under wine:
+
+	* wine cmd < sokerban.bat
+	* wine binw64/sokerban.exe
+
 
 ------------------------------------------------------------------------
 Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the install-directory, and typing "sokerban_osx" on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
