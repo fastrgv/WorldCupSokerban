@@ -27,6 +27,11 @@ soker-ban girl video link:
 
 ## What's new:
 
+**ver 3.5.8 -- 14oct21**
+* 1-key now restores Original puzzle.
+* Added standard close window event handler.
+* Improved undo function.
+* Updated libraries.
 
 **ver 3.5.6 -- 20feb21**
 * Upgraded to using OpenAL sound.
