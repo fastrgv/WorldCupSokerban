@@ -27,6 +27,10 @@ soker-ban girl video link:
 
 ## What's new:
 
+**ver 3.5.9 -- 29oct2021**
+* Improved adaOpenAL binding code...sokerban is now buildable with [GNU Compiler Collection] GNAT, as well as all AdaCore versions.
+* Updated glext.lib.
+
 **ver 3.5.8 -- 14oct21**
 * 1-key now restores Original puzzle.
 * Added standard close window event handler.
