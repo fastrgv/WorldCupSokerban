@@ -298,8 +298,7 @@ W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
 The particular choice of sound and image files delivered are not essential to the function of the game and are easily replaced.  This software is primarily intended as a tutorial example of modern OpenGL methods.  The only requirements are that sounds be in WAV format and images be in PNG format.
 
 ### SoundFiles
-Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound is from freesound.org so is covered by the Creative Commons Noncommercial License;  see
-http://creativecommons.org/licenses/by-nc/3.0/legalcode/
+Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound is from freesound.org and is covered by the Creative Commons CC0 License;
 
 ### ImageFiles
 ...for textures were freely [no copyright indications] available on google images.  Files for text-textures were created using gimp and are also covered by the GNU GPL v3 license.  The pusher man is modified from a skin by Anders Widell, so thanks to Anders for that.  An alternate pusher is also available that was obtained from OpenGameArt.org and created by felixschuett with a CC0 license.
