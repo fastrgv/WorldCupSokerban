@@ -27,37 +27,15 @@ soker-ban girl video link:
 
 ## What's new:
 
+
+
+**ver 3.6.1 -- 24sep2022**
+
+* Now using 64-bit GNU Ada for Windows to give maximum memory to embedded solvers.
+
 **ver 3.6.1 -- 16sep2022**
 
 * Now using GNU Ada rather than defunct AdaCore compiler.
-
-
-**ver 3.5.9 -- 29oct2021**
-* Improved adaOpenAL binding code...sokerban is now buildable with [GNU Compiler Collection] GNAT, as well as all AdaCore versions.
-* Updated glext.lib.
-
-**ver 3.5.8 -- 14oct21**
-* 1-key now restores Original puzzle.
-* Added standard close window event handler.
-* Improved undo function.
-* Updated libraries.
-
-**ver 3.5.6 -- 20feb21**
-* Upgraded to using OpenAL sound.
-* Updated existing autosolvers.
-* Added more capable hbox4 autosolver.
-* Added visual aid that shows 
-	* possible destinations when a box is clicked.
-	* possible sources when a goal is clicked.
-
-
-**ver 3.5.5 -- 27oct20**
-* Elliminated SFML-audio entirely.
-* Greatly simplified build process.
-
-**ver 3.5.4 -- 20sep20**
-* Updated all glfw libs to v3.3.2.
-* Added "sokerban.bat" for Windows users.
 
 
 ## See complete revision history at end of file.
@@ -70,7 +48,7 @@ It has undo (u) and restart (r) functions.  Comes with many puzzle files, each t
 
 To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective is to kick all the red and blue balls into the goal nets.  Notice that these strange soccer balls roll in two perpendicular directions only!
 
-The (=)-key or the (.)-key triggers an embedded solver that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
+The (=)-key or the (.)-key or the (,)-key triggers embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
 
@@ -89,11 +67,17 @@ Works on Macs running OSX and PCs running Windows or GNU/Linux.
  * fully OpenGL 3.3 core profile Ada code;
  * includes 3 "live" embedded autosolvers that help you to learn;
 
+ * no installation
+ * no dependencies
+ * simply unzip in your Downloads directory, and run.
+ * or unzip onto a USB flash drive [w/same file format] and run.
+
 ----------------------------------------------
 ## Embedded Autosolver Function
-Two autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse puzzles.
+Three autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse puzzles.
 
-Similarly, the 2nd alternate solver is initiated with the (".")-key.
+Similarly, the 2nd alternate solver [hbox4] is initiated with the (".")-key.
+And the 3rd alternate solver [ibox] is initiated with the (",")-key.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
@@ -105,20 +89,19 @@ Finally, a single command-line argument (decimal float) specifies a persistent t
 ## External Autosolvers
 Remember that there are still three external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "iplr3r", "ibox3r" or "hbox4".  There are many large or sparse [lishout] puzzles the first two solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
 
-The command to build them both [on OSX/linux] is simply:
-	ccc.sh ibox3r
-	ccc.sh iplr3r
-	ccc.sh hbox4
+The command to build them both linux is simply:
+	cccgnu.sh ibox3r
+	cccgnu.sh iplr3r
+	cccgnu.sh hbox4
 
-and on Windows:
-	ccc.bat ibox3r
-	ccc.bat iplr3r
-	ccc.bat hbox4
+On Windows use ccc.bat.
+On OSX use cccosx.sh.
+
 
 To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
 
 EG on windows type:
-	binw32\iplr3r games\pico_22.sok 22 3
+	binw64\iplr3r games\pico_22.sok 22 3
 	...to solve the 3rd level in file pico_22.sok.
 
 EG on OSX type:
@@ -146,31 +129,33 @@ Mac users see "osx-setup.txt".
 
 Requires Windows, OSX(>=10.13) or GNU/linux with a graphics card that supports OpenGL version 3.3;
 
-Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
-
-Open a commandline terminal, and cd to the install directory.
+Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
+The proper command to extract the archive and maintain the directory structure is "7z x filename".
 
 ------------------------------------------------------------------------
-Windows users may see some error messages (that may be ignored) pertaining to directory links.  Directory links are needed only on OSX & Linux.
+Open a commandline terminal, and cd to the install directory.
 
 You will see a new directory appear, that you may rename.
 
 Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
 
-Windows users type "sokerban.bat" from the installation directory.
+Windows users type "sokerban.bat" from the installation directory. Or to set the standard default of 10 seconds wait before giving up for internal solvers type:
+	binw64\sokerban.exe 10.0
 
 ------------------------------------------------------------------------
-Linux users can type "sokerban_gnu" or double click the icon for sokerban_gnu in file manager.
+Linux users can type "sokerban_gnu" or double click the icon for sokerban_gnu in file manager. Here too, sokerban_gnu 10.0 sets internal solver wait to 10 seconds.
 
-The distributed linux executables require glibc v2.14 or newer.  That means if your distribution is older, it might not run, and you will need to recompile.
- Or you can try running the windows EXEs under wine:
+You can also run the windows EXEs under wine thusly:
 
 	* wine cmd < sokerban.bat
 	* wine binw64/sokerban.exe
 
+Note: I suggest that Windows users DO NOT try running the linux executables under WSL [Windows Subsystem for Linux]; that mode is not supported. Simply use the windows version.
 
 ------------------------------------------------------------------------
-Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the install-directory, and typing "sokerban_osx" on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
+Mac users note that this game may be initiated in two ways.  First, by opening a terminal, navigating to the install-directory, and typing "sokerban_osx" on the command line.  Second by navigating to the installation directory in Finder and clicking the "sokerban.app" icon named "Sokerban".  Here, sokerban_osx 10.0 sets the internal solver wait to 10 seconds.
+
+Note also that a 2-finger-swipe simulates the mouse wheel on a MacBook;  and a 2-finger click simulates the right button click to restore view settings, while a 1-finger click and drag simulates the left button drag on a mouse.
 
 The install-directory should contain subdirectories named "data", "libs", and "games".
 
@@ -189,11 +174,11 @@ View Controls:
 Also, the keyboard controls are:
 * (c) zoom Closer
 * (f) zoom Further
-* (0) defaults
+* (o) zoom default
 * (/) tilt up
 * (\\) tilt down
 * (=) try to autosolve (method #1 = iplr3r)
-* (.) try to autosolve (method #2 = hbox4)
+* (.) try to autosolve (method #2 = hbox4 => most capable)
 * (,) try to autosolve (method #3 = ibox3r)
 * (h) HELP
 * (b) Male Avatar (Boy)
@@ -202,7 +187,7 @@ Also, the keyboard controls are:
 Other controls, as indicated by the help screen:
 * (esc) to quit
 * (u) to undo
-* (r) restart
+* (r) reset@setPt;   (1) restart puzzle
 * (n) next-level in current file
 * (p) previous-level in current file
 * (L-shift) previous file
@@ -213,7 +198,7 @@ Note also that a specific sokoban file may be tested by naming it on the termina
 
 	sokerban sokfilepath maxlevels startlevel
 
-where sokerban can be sokerban_gnu, sokerban_osx or sokerban.exe.
+where sokerban can be sokerban_gnu, sokerban_osx or sokerban.bat.
 
 For example on linux you could type
 
@@ -226,52 +211,41 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ## Build Requirements:
  * a recent GNAT Ada compiler;
  * OpenGL 3.3 (or better) and a graphics card that supports it.
- * Xcode g++ compiler, if using OSX>=10.13(sep2017)
 
 
 
 ================================================================
 ## Build instructions:
 
-ccc.sh is the build script for the two autosolvers "iplr3r" and "ibox3r".  Just type "ccc.sh iplr3r" or "ccc.sh ibox3r" to compile on any platform, assuming the presence of a GNAT Ada compiler.
+ccc.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox4", "iplr3r" and "ibox3r".
 
-Three [pre-compiled] game executables are provided, one for Windows, one for gnu/linux and one for OSX.  The OSX executable is intended to have minimal runtime requirements:  sokerban_osx.  The linux binary sokerban_gnu, is intended to run in the presence of the directory "libLocal", which contains some dynamically loaded libraries that can be, but need not be present on a target system:
-GLFW3, SFML, FLAC, ogg, vorbis, & openal.
 
-Similarly, the Windows binary, .\binw64\sokerban.exe, needs the DLLs collocated.
-
-Three build scripts are described;  and due to a recent script change, a linux build machine need not have a C++ compiler installed.  Only GNAT is required.
+The following build scripts work for GNU Ada [with its own g++].
 
 
 -------------------------------------------------------
 msWin64 => wbuildall.bat
 
 build script that requires libraries included in ./binw64/
+Please read ~/docs/gnuAdaOnWindows.txt.
 
 
 -------------------------------------------------------
 MacOSX:
 
-(ocmpss.sh):  build script for generating a portable executable that will run on most recent OSX platforms whether or not they have non-standard libraries such as GLEW, GLFW3, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
+(obuildall.sh):  build script for generating a portable executable that will run on most recent OSX platforms whether or not they have non-standard libraries such as GLEW, GLFW3, SFML installed.  I used this to build the executable that I deliver, named sokerban_osx.  This script references delivered static library files for nonstandard libs.
 
 ------------------------------------------------------
 GNU/Linux:  
 
-(lcmpd.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
+(lbuildall.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
 
 If the delivered linux binary does not run...
 
-* Manually install GNAT GPL from libre.adacore.com/download/.
-* Rerun the compile script lcmpd.sh.
+* Manually install GNU Ada compiler. See "gnuAdaOnWindows.txt".
+* Rerun the compile script lbuildall.sh.
 
 
-### Fixable Link Problems during linux build:
-
-On a linux build machine, you might have fixable link errors, depending on its configuration.  If you are missing "libz", you can simply copy "libz.so" from the AdaCore ~/lib/ directory into /usr/local/lib/.  If "libGL" cannot be found, this literally means "libGL.so" was absent.  But you might have "libGL.so.1" present.  In this case, simply create a softlink by changing to the libGL directory, then type the line:
-
-sudo ln -s libGL.so.1 libGL.so  (and enter the admin password)
-
-whence the linker should now be able to find what it wants.  But if there is more than one file libGL.so present on your system, make sure you use the best one;  i.e. the one that uses accelerated graphics.
 
 
 
@@ -280,7 +254,7 @@ whence the linker should now be able to find what it wants.  But if there is mor
 
 W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2015  <fastrgv@gmail.com>
+ Copyright (C) 2022  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -302,21 +276,68 @@ W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
 ### General Note
 The particular choice of sound and image files delivered are not essential to the function of the game and are easily replaced.  This software is primarily intended as a tutorial example of modern OpenGL methods.  The only requirements are that sounds be in WAV format and images be in PNG format.
 
+It is my intention to use media with copyrights or licenses that are compatible with GPLv3. Please notify me if you believe there is an incompatibility, and it will be removed ASAP, eg a CC-by-NC license is NOT GPL compatible.
+
+
+
 ### SoundFiles
-Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound is from freesound.org and is covered by the Creative Commons CC0 License;
+Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound is from freesound.org so is covered by the Creative Commons CC0 License;  see the file creativeCommons.txt.
 
 ### ImageFiles
 ...for textures were freely [no copyright indications] available on google images.  Files for text-textures were created using gimp and are also covered by the GNU GPL v3 license.  The pusher man is modified from a skin by Anders Widell, so thanks to Anders for that.  An alternate pusher is also available that was obtained from OpenGameArt.org and created by felixschuett with a CC0 license.
 
 
 ----------------------------------------------
-## Best Download Site for all my games:
+## Download Site for all my games:
 https://github.com/fastrgv?tab=repositories
+https://www.indiedb.com/members/fastrgv/games
+https://fastrgv.itch.io
+https://sourceforge.net/u/fastrgv/profile/
+https://gamejolt.com/@fastrgv/games
 
-Tags:  sokoban, puzzle, soccer, football
+## Tags:  sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+**ver 3.6.0 -- ddmmm2021** (not delivered)
+* Updated all GLFW libs to newer [static] version, & scripts.
+* Removed cc-by-nc-licensed puzzles due to incompatibility with GPLv3.
+
+**ver 3.5.9 -- 29oct2021**
+* Improved adaOpenAL binding code...sokerban is now buildable with [GNU Compiler Collection] GNAT, as well as all AdaCore versions.
+* Updated glext.lib.
+
+**ver 3.5.8 -- 14oct21**
+* 1-key now restores Original puzzle.
+* Added standard close window event handler.
+* Improved undo function.
+* Updated libraries.
+
+**ver 3.5.7 -- 24mar21**
+* Repaired Rt.MouseBtn function to un-highlight [only].
+
+**ver 3.5.7 -- 4mar21**
+* Added 3rd embedded solver accessed by (,)-key.
+
+**ver 3.5.6 -- 20feb21**
+* Upgraded to using OpenAL sound.
+* Updated existing autosolvers.
+* Added more capable hbox4 autosolver.
+* Added visual aid that shows 
+	* possible destinations when a box is clicked.
+	* possible sources when a goal is clicked.
+
+
+**ver 3.5.5 -- 27oct20**
+* Elliminated SFML-audio entirely.
+* Greatly simplified build process.
+
+**ver 3.5.4 -- 20sep20**
+* Updated all glfw libs to v3.3.2.
+* Added "sokerban.bat" for Windows users.
+
+
 
 **ver 3.5.3 -- 10jun20**
 * Improved coding to read WAV file while "protected".
@@ -337,7 +358,6 @@ Tags:  sokoban, puzzle, soccer, football
 **ver 3.5.0 -- 20jan20**
 
 * Significantly improved linux portability;
-
 
 
 
