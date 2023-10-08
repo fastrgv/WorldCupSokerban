@@ -20,8 +20,13 @@ Type "7z x filename" to extract the archive.
 soker-ban girl video link:
 <https://youtu.be/No_ElhmToqw>
 
-# World Cup Sokerban
 
+
+
+video soker-ban girl:
+<https://youtu.be/No_ElhmToqw>
+
+# World Cup Sokerban
 
 ----------------------------------------------------------------
 
@@ -29,20 +34,29 @@ soker-ban girl video link:
 
 
 
-**ver 3.6.1 -- 24sep2022**
+**ver 3.6.3 -- 7oct2023**
 
-* Now using 64-bit GNU Ada for Windows to give maximum memory to embedded solvers.
+* New OSX build without bundle, & without using Xcode.
+* Updated splaytree code for solvers.
+
+
+**ver 3.6.2 -- 24sep2022**
+
+* Removed w32 build because embedded solvers need maximal memory.
+* Now using simpler-to-setup GNU Ada for Win64.
+
 
 **ver 3.6.1 -- 16sep2022**
 
 * Now using GNU Ada rather than defunct AdaCore compiler.
+* Added several new puzzle groups including Loma.
 
 
 ## See complete revision history at end of file.
 
 
 ## WorldCupSokerban Description
-This is a soccer-themed, 3D sokoban puzzle game that includes 3 external solvers and 2 embedded solvers.
+This is a soccer-themed, 3D sokoban puzzle game that includes 3 external solvers and 3 embedded solvers.
 
 It has undo (u) and restart (r) functions.  Comes with many puzzle files, each typically having dozens of "levels".  The next (n) and previous (p) keys move between levels.  The (Lshft) and (Rshft) keys move between the different puzzle files (there are currently 60).  The (z) key creates a setpoint (reZero) so that subsequent restarts restore that setpoint.
 
@@ -50,9 +64,9 @@ To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective
 
 The (=)-key or the (.)-key or the (,)-key triggers embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
 
-The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  MacBooks can simulate these actions, as noted below.
+The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  
 
-Works on Macs running OSX and PCs running Windows or GNU/Linux.
+Works on PCs running Windows, OSX, or GNU/Linux.
 
 
 --------------------------
@@ -60,9 +74,8 @@ Works on Macs running OSX and PCs running Windows or GNU/Linux.
  * laptop friendly;
  * user definable puzzles;
  * many predefined puzzles ranging from easy to nearly impossible;
- * Windows, GNU/linux binaries included;
+ * Windows, OSX, GNU/linux binaries included;
  * full source code;
- * supports high DPI mode on OSX Retina displays;
  * uses OpenAL for the sounds, GLFW3 for input & window management;
  * fully OpenGL 3.3 core profile Ada code;
  * includes 3 "live" embedded autosolvers that help you to learn;
@@ -89,13 +102,13 @@ Finally, a single command-line argument (decimal float) specifies a persistent t
 ## External Autosolvers
 Remember that there are still three external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "iplr3r", "ibox3r" or "hbox4".  There are many large or sparse [lishout] puzzles the first two solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
 
-The command to build them both linux is simply:
+The command to build them all on linux is simply:
 	cccgnu.sh ibox3r
 	cccgnu.sh iplr3r
 	cccgnu.sh hbox4
 
 On Windows use ccc.bat.
-
+On Mac/OSX use cccosx.sh
 
 
 To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
@@ -106,13 +119,16 @@ EG on windows type:
 
 
 EG on linux type:
-	hbox4_gnu games/pico_22.sok 22 3
+	hbox4 games/pico_22.sok 22 3
+
+EG on OSX type:
+	ibox3r_osx games/pico_22.sok 22 3
 
 
 
 ----------------------------------------------
 ## what is special about this project?
-It uses the Ada programming language and modern OpenGL methods, with textures, shaders and uniforms.  Compiles and runs on Windows, GNU/Linux and Mac OSX systems.
+It uses the Ada programming language and modern OpenGL methods, with textures, shaders and uniforms.  Compiles and runs on Windows, OSX, GNU/Linux systems.
 
 Focusing on portability, transparency, and open source freedom, this project relies exclusively on F.O.S.S. tools:  a thin GLFW3 binding, a thin OpenGL binding, a PNG reader by Stephen Sanguine & Dimitry Anisimkov, OpenAL Audio with a homebrew binding, and a GNAT compiler.
 
@@ -121,14 +137,17 @@ Focusing on portability, transparency, and open source freedom, this project rel
 -----------------------
 ## Setup & Running:
 
+Mac/OSX users should read "osx-setup.txt".
 Windows users should read "windows-setup.txt".
 
+Unzip the archive.  
 
+* On Linux & Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
 
-Requires Windows or GNU/linux with a graphics card that supports OpenGL version 3.3;
+* On OSX, Keka handles 7z files.  The command-line for Keka works thusly:
+	* /Applications/Keka.app/Contents/MacOS/Keka --cli 7z x (filename.7z)
 
-Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
-The proper command to extract the archive and maintain the directory structure is "7z x filename".
+After the archive is unzipped...
 
 ------------------------------------------------------------------------
 Open a commandline terminal, and cd to the install directory.
@@ -137,11 +156,22 @@ You will see a new directory appear, that you may rename.
 
 Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
 
+
+------------------------------------------------------------------------
+Mac users type:
+
+	sokerban_osx
+
+------------------------------------------------------------------------
 Windows users type "sokerban.bat" from the installation directory. Or to set the standard default of 10 seconds wait before giving up for internal solvers type:
 	binw64\sokerban.exe 10.0
 
 ------------------------------------------------------------------------
-Linux users can type "sokerban_gnu" or double click the icon for sokerban_gnu in file manager. Here too, sokerban_gnu 10.0 sets internal solver wait to 10 seconds.
+Linux users can type:
+
+	sokerban_gnu
+
+or double click the icon for sokerban in file manager. Here too, sokerban 10.0 sets internal solver wait to 10 seconds.
 
 You can also run the windows EXEs under wine thusly:
 
@@ -150,12 +180,18 @@ You can also run the windows EXEs under wine thusly:
 
 Note: I suggest that Windows users DO NOT try running the linux executables under WSL [Windows Subsystem for Linux]; that mode is not supported. Simply use the windows version.
 
+**If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the command with "padsp",EG:  "padsp (ExeName)".**
+
+
+
 ------------------------------------------------------------------------
+
 The install-directory should contain subdirectories named "data", "libs", and "games".
+
 
 The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
 
-	sokerban_gnu ( or sokerban_osx, or sokerban.bat )
+	sokerban ( sokerban.bat )
 
 Remember, the WASD or IJKL or arrow keys control movements.
 
@@ -189,9 +225,10 @@ Other controls, as indicated by the help screen:
 
 Note also that a specific sokoban file may be tested by naming it on the terminal window command line with the following syntax:
 
-	sokerban sokfilepath maxlevels startlevel
+	<sokerban> sokfilepath maxlevels startlevel
 
-where sokerban can be sokerban_gnu, sokerban_osx or sokerban.bat.
+where <sokerban> can be 
+	sokerban_gnu, sokerban_osx or sokerban.bat.
 
 For example on linux you could type
 
@@ -210,24 +247,26 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ================================================================
 ## Build instructions:
 
-ccc.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox4", "iplr3r" and "ibox3r".
+ccc.sh/ccc.bat are the build scripts for the autosolvers "hbox4", "iplr3r" and "ibox3r".
 
 
 The following build scripts work for GNU Ada [with its own g++].
 
 
 -------------------------------------------------------
-msWin64 => wbuildall.bat
+msWin64 => setpath64.bat + wbuildall.bat
 
 build script that requires libraries included in ./binw64/
 Please read ~/docs/gnuAdaOnWindows.txt.
 
 
+------------------------------------------------------
+Mac/OSX => obuildall.sh
 
 ------------------------------------------------------
 GNU/Linux:  
 
-(lbuildall.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban_gnu, which should run in the presence of ./libs.
+(lbuildall.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban, which should run in the presence of ./libs.
 
 If the delivered linux binary does not run...
 
@@ -243,7 +282,7 @@ If the delivered linux binary does not run...
 
 W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2022  <fastrgv@gmail.com>
+ Copyright (C) 2023  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -347,6 +386,5 @@ https://gamejolt.com/@fastrgv/games
 **ver 3.5.0 -- 20jan20**
 
 * Significantly improved linux portability;
-
 
 
