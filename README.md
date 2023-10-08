@@ -36,7 +36,7 @@ video soker-ban girl:
 
 **ver 3.6.3 -- 7oct2023**
 
-* New OSX build without bundle, & without using Xcode.
+* New OSX build without bundle, & built without using Xcode.
 * Updated splaytree code for solvers.
 
 
