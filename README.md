@@ -27,6 +27,8 @@ soker-ban girl video link:
 
 
 
+alternate download link:
+https://sourceforge.net/projects/worldcupsokerban/
 
 video soker-ban girl:
 <https://youtu.be/No_ElhmToqw>
@@ -37,24 +39,11 @@ video soker-ban girl:
 
 ## What's new:
 
+**ver 3.6.4 -- 13dec2023**
 
-
-**ver 3.6.3 -- 7oct2023**
-
-* New OSX build without bundle, & built without using Xcode.
-* Updated splaytree code for solvers.
-
-
-**ver 3.6.2 -- 24sep2022**
-
-* Removed w32 build because embedded solvers need maximal memory.
-* Now using simpler-to-setup GNU Ada for Win64.
-
-
-**ver 3.6.1 -- 16sep2022**
-
-* Now using GNU Ada rather than defunct AdaCore compiler.
-* Added several new puzzle groups including Loma.
+* Upgraded hbox4 solvers, embedded & external.
+* Created a "stadium" view alternative to the "overhead" view.
+* Replaced the granite with a hedge boundary.
 
 
 ## See complete revision history at end of file.
@@ -67,7 +56,10 @@ It has undo (u) and restart (r) functions.  Comes with many puzzle files, each t
 
 To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective is to kick all the red and blue balls into the goal nets.  Notice that these strange soccer balls roll in two perpendicular directions only!
 
-The (=)-key or the (.)-key or the (,)-key triggers embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
+The (=)-key or the (,)-key or the (.)-key trigger embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
+
+Note: all 3 solvers can fail if the puzzle is too large (256 or more valid puzzle positions).
+
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  
 
@@ -149,7 +141,7 @@ Unzip the archive.
 
 * On Linux & Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
 
-* On OSX, Keka handles 7z files.  The command-line for Keka works thusly:
+* On OSX, Keka works well for 7Z files. The command-line for Keka is:
 	* /Applications/Keka.app/Contents/MacOS/Keka --cli 7z x (filename.7z)
 
 After the archive is unzipped...
@@ -178,7 +170,7 @@ Linux users can type:
 
 or double click the icon for sokerban in file manager. Here too, sokerban 10.0 sets internal solver wait to 10 seconds.
 
-You can also run the windows EXEs under wine thusly:
+You can also run the windows EXEs on Linux under wine thusly:
 
 	* wine cmd < sokerban.bat
 	* wine binw64/sokerban.exe
@@ -200,39 +192,54 @@ The GNU/linux executable must have access to ./libs unless your system already h
 
 Remember, the WASD or IJKL or arrow keys control movements.
 
-View Controls: 
-* Your mouse can pan & zoom
+View Controls:
+
+* Your mouse can pan [up/down] & zoom
 * box-click:  possible destinations
 * goal-click: possible sources
 
 Also, the keyboard controls are:
+
+* (t) view Toggle: Overhead / Stadium (new)
 * (c) zoom Closer
 * (f) zoom Further
 * (o) zoom default
-* (/) tilt up
-* (\\) tilt down
-* (=) try to autosolve (method #1 = iplr3r)
-* (.) try to autosolve (method #2 = hbox4 => most capable)
-* (,) try to autosolve (method #3 = ibox3r)
+* (/) move center upward
+* (\\) move center downward
+* (=) try to autosolve (method #1 = iplr3r => fewest moves)
+* (,) try to autosolve (method #2 = ibox3r => fewest pushes)
+* (.) try to autosolve (method #3 = hbox4 => most capable)
 * (h) HELP
 * (b) Male Avatar (Boy)
 * (g) Female Avatar (Girl)
+* (0..5) set solution method for hbox4 :
+	0: fast		fastest method
+	1: pullOpt	minimize pushes
+	2: nonHung	nonHungarian
+	3: 0+mWt  	
+	4: 1+mWt  	default
+	5: 2+mWt		
+
+You can download my hbox4 stand-alone sokoban solver for greater details.
+
 
 Other controls, as indicated by the help screen:
+
 * (esc) to quit
-* (u) to undo
-* (r) reset@setPt;   (1) restart puzzle
+* (u) to undo a move
+* (r) reset to the setPt;   
+* (enter) restart puzzle
 * (n) next-level in current file
 * (p) previous-level in current file
 * (L-shift) previous file
 * (R-shift) next file
 * (z) reZero the setpoint
 
-Note also that a specific sokoban file may be tested by naming it on the terminal window command line with the following syntax:
+Note also that a specific sokoban file may be loaded by naming it on the terminal window command line with the following syntax:
 
-	<sokerban> sokfilepath maxlevels startlevel
+	[sokerban] sokfilepath maxlevels startlevel
 
-where <sokerban> can be 
+where [sokerban] can be 
 	sokerban_gnu, sokerban_osx or sokerban.bat.
 
 For example on linux you could type
@@ -274,6 +281,12 @@ GNU/Linux:
 (lbuildall.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban, which should run in the presence of ./libs.
 
 If the delivered linux binary does not run...
+
+if you have wine installed, this should work:
+
+* wine binw64/sokerban.exe
+
+OR you can:
 
 * Manually install GNU Ada compiler. See "gnuAdaOnWindows.txt".
 * Rerun the compile script lbuildall.sh.
@@ -332,6 +345,18 @@ https://gamejolt.com/@fastrgv/games
 
 
 ## Older Revision History:
+
+**ver 3.6.3 -- 7oct2023**
+* New OSX build without bundle, & built without using Xcode.
+* Updated splaytree code for solvers.
+
+**ver 3.6.2 -- 24sep2022**
+* Removed w32 build because embedded solvers need maximal memory.
+* Now using simpler-to-setup GNU Ada for Win64.
+
+**ver 3.6.1 -- 16sep2022**
+* Now using GNU Ada rather than defunct AdaCore compiler.
+* Added several new puzzle groups including Loma.
 
 **ver 3.6.0 -- ddmmm2021** (not delivered)
 * Updated all GLFW libs to newer [static] version, & scripts.
