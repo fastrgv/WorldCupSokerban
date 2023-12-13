@@ -39,6 +39,13 @@ video soker-ban girl:
 
 ## What's new:
 
+**ver 3.6.5 -- 14dec2023**
+
+* Removed stadium view.
+* Simplified view controls so pan+zoom provides all views.
+* Fixed problem with the embedded ibox solver not respecting time limit.
+
+
 **ver 3.6.4 -- 13dec2023**
 
 * Upgraded hbox4 solvers, embedded & external.
@@ -200,7 +207,6 @@ View Controls:
 
 Also, the keyboard controls are:
 
-* (t) view Toggle: Overhead / Stadium (new)
 * (c) zoom Closer
 * (f) zoom Further
 * (o) zoom default
