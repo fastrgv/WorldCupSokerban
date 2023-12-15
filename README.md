@@ -39,6 +39,11 @@ video soker-ban girl:
 
 ## What's new:
 
+**ver 3.6.6 -- 16dec2023**
+
+* Added north/south view controls: PgUp/PgDn.
+
+
 **ver 3.6.5 -- 14dec2023**
 
 * Removed stadium view.
@@ -210,8 +215,10 @@ Also, the keyboard controls are:
 * (c) zoom Closer
 * (f) zoom Further
 * (o) zoom default
-* (/) move center upward
-* (\\) move center downward
+* (PgUp) move viewpoint North
+* (PgDn) move viewpoint South
+* (/) tilt upward
+* (\\) tilt downward
 * (=) try to autosolve (method #1 = iplr3r => fewest moves)
 * (,) try to autosolve (method #2 = ibox3r => fewest pushes)
 * (.) try to autosolve (method #3 = hbox4 => most capable)
