@@ -27,6 +27,7 @@ soker-ban girl video link:
 
 
 
+
 alternate download link:
 https://sourceforge.net/projects/worldcupsokerban/
 
@@ -39,6 +40,13 @@ video soker-ban girl:
 
 ## What's new:
 
+
+
+**ver 3.6.7 -- 3jan2024**
+
+* Fixed some errors and improved all embedded and external autosolvers.
+
+
 **ver 3.6.6 -- 16dec2023**
 
 * Added north/south view controls: PgUp/PgDn.
@@ -49,7 +57,6 @@ video soker-ban girl:
 * Removed stadium view.
 * Simplified view controls so pan+zoom provides all views.
 * Fixed problem with the embedded ibox solver not respecting time limit.
-
 
 **ver 3.6.4 -- 13dec2023**
 
@@ -107,31 +114,40 @@ Embedded autosolver failure might imply the present state of the puzzle is impos
 
 Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using a command-line argument. 
 
+The default method used by embedded solver Hbox4 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
+
+
+### 6 method options for hbox4:
+
+	* 0 "quickest"
+	* 1 more "efficient"
+	* 2 suppress hungarian estimator (for dense puzzles)
+	* 3 like 0 but tries to reduce total moves
+	* 4 like 1 but tries to reduce total moves [default]
+	* 5 like 2 but tries to reduce total moves
+
+For further details see:
+
+	* https://sourceforge.net/projects/hbox4/
+
+
+
 
 ## External Autosolvers
-Remember that there are still three external autosolvers without time constraints.  Subject to several limitations, typing: "solver-name puzzle-file-name.sok maxlevels level-number" will attempt to solve a particular puzzle for you, where solver-name is either "iplr3r", "ibox3r" or "hbox4".  There are many large or sparse [lishout] puzzles the first two solvers cannot handle, but they are pretty good at sovling the small dense ones.  Use the script ccc.sh to compile either solver for your operating system (assuming the presence of an Ada compiler).
+There are three external autosolvers without time constraints.  
+There are many large or sparse puzzles the first two solvers cannot handle, but they are pretty good at solving the small dense ones. Hbox4 is the most capable.
 
-The command to build them all on linux is simply:
-	cccgnu.sh ibox3r
-	cccgnu.sh iplr3r
-	cccgnu.sh hbox4
-
-On Windows use ccc.bat.
-On Mac/OSX use cccosx.sh
-
-
-To run type:  [exeName puzzleFile TotalLevels LevelToSolve]
+To run type:  [exeName puzzleFile LevelToSolve]
 
 EG on windows type:
-	binw64\iplr3r games\pico_22.sok 22 3
+	external_solvers\iplr3r.exe games\pico_22.sok 3
 	...to solve the 3rd level in file pico_22.sok.
 
-
 EG on linux type:
-	hbox4 games/pico_22.sok 22 3
+	external_solvers/hbox4_gnu games/pico_22.sok 3
 
 EG on OSX type:
-	ibox3r_osx games/pico_22.sok 22 3
+	external_solvers/ibox3r_osx games/pico_22.sok 3
 
 
 
@@ -313,7 +329,7 @@ OR you can:
 
 W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2023  <fastrgv@gmail.com>
+ Copyright (C) 2024  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
