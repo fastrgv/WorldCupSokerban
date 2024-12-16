@@ -22,17 +22,13 @@ Type "7z x filename" to extract the archive.
 
 ===================================================================================
 
-soker-ban girl video link:
-<https://youtu.be/No_ElhmToqw>
-
-
-
 
 alternate download link:
-https://sourceforge.net/projects/worldcupsokerban/
+* https://sourceforge.net/projects/worldcupsokerban/
 
 video soker-ban girl:
-<https://youtu.be/No_ElhmToqw>
+* https://youtu.be/No_ElhmToqw
+
 
 # World Cup Sokerban
 
@@ -42,34 +38,18 @@ video soker-ban girl:
 
 
 
-**ver 3.6.7 -- 3jan2024**
+**ver 3.6.8 -- 16dec2024**
 
-* Fixed some errors and improved all embedded and external autosolvers.
-
-
-**ver 3.6.6 -- 16dec2023**
-
-* Added north/south view controls: PgUp/PgDn.
-
-
-**ver 3.6.5 -- 14dec2023**
-
-* Removed stadium view.
-* Simplified view controls so pan+zoom provides all views.
-* Fixed problem with the embedded ibox solver not respecting time limit.
-
-**ver 3.6.4 -- 13dec2023**
-
-* Upgraded hbox4 solvers, embedded & external.
-* Created a "stadium" view alternative to the "overhead" view.
-* Replaced the granite with a hedge boundary.
-
+* Updated hbox4 to hbox5.
+* Updated embedded solver.
+* updated OpenAL sound code.
+* Updated memory checks for hbox5 to be more cautious.
 
 ## See complete revision history at end of file.
 
 
 ## WorldCupSokerban Description
-This is a soccer-themed, 3D sokoban puzzle game that includes 3 external solvers and 3 embedded solvers.
+This is a soccer-themed, 3D sokoban puzzle game that includes 3 embedded solvers.
 
 It has undo (u) and restart (r) functions.  Comes with many puzzle files, each typically having dozens of "levels".  The next (n) and previous (p) keys move between levels.  The (Lshft) and (Rshft) keys move between the different puzzle files (there are currently 60).  The (z) key creates a setpoint (reZero) so that subsequent restarts restore that setpoint.
 
@@ -77,8 +57,7 @@ To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective
 
 The (=)-key or the (,)-key or the (.)-key trigger embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
 
-Note: all 3 solvers can fail if the puzzle is too large (256 or more valid puzzle positions).
-
+Note: all 3 solvers can fail if the puzzle is too large or difficult, so the default timeout is 10 seconds.
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  
 
@@ -103,50 +82,61 @@ Works on PCs running Windows, OSX, or GNU/Linux.
 
 ----------------------------------------------
 ## Embedded Autosolver Function
-Three autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse puzzles.
+Three autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse, or difficult puzzles.
 
-Similarly, the 2nd alternate solver [hbox4] is initiated with the (".")-key.
-And the 3rd alternate solver [ibox] is initiated with the (",")-key.
+Similarly, the 2nd alternate solver [ibox] is initiated with the (",")-key.
+The 3rd alternate solver [hbox5] is initiated with the (".")-key and is the most capable.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
 Embedded autosolver failure might imply the present state of the puzzle is impossible to solve, or simply that the autosolver failed due to time constraint, or insufficient capability.
 
 Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using a command-line argument. 
+The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
 
-The default method used by embedded solver Hbox4 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
+### Summary:
+solver keys [within parentheses]:
+
+*	(=) bfs#1 [iplr; for small puzzles]; 
+*	(,) bfs#2 [ibox; medium]
+*	(.) hbox5 [most capable]; 
+*  (0..5) sets hbox5 method [details below]
 
 
-### 6 method options for hbox4:
+### 6 method options for hbox5:
 
-	* 0 "quickest"
-	* 1 more "efficient"
-	* 2 suppress hungarian estimator (for dense puzzles)
-	* 3 like 0 but tries to reduce total moves
-	* 4 like 1 but tries to reduce total moves [default]
-	* 5 like 2 but tries to reduce total moves
+* 0 quickest
+* 1 more efficient
+* 2 suppress hungarian estimator (for dense puzzles)
+* 3 like 0 but tries to reduce total moves
+* 4 like 1 but tries to reduce total moves
+* 5 like 2 but tries to reduce total moves
 
 For further details see:
 
-	* https://sourceforge.net/projects/hbox4/
+* https://sourceforge.net/projects/hbox4/ (4 is correct)
 
 
 
 
 ## External Autosolvers
-There are three external autosolvers without time constraints.  
-There are many large or sparse puzzles the first two solvers cannot handle, but they are pretty good at solving the small dense ones. Hbox4 is the most capable.
+There are three external autosolvers without time constraints, and larger memory constraints.
+There are many large or sparse puzzles the first two solvers cannot handle, but they are pretty good at solving the small dense ones. Hbox5 is the most capable.
 
 To run type:  [exeName puzzleFile LevelToSolve]
 
 EG on windows type:
+
 	external_solvers\iplr3r.exe games\pico_22.sok 3
-	...to solve the 3rd level in file pico_22.sok.
+
+...to solve the 3rd level in file pico_22.sok.
 
 EG on linux type:
-	external_solvers/hbox4_gnu games/pico_22.sok 3
+
+	external_solvers/hbox5_gnu games/pico_22.sok 3
 
 EG on OSX type:
+
 	external_solvers/ibox3r_osx games/pico_22.sok 3
 
 
@@ -156,6 +146,14 @@ EG on OSX type:
 It uses the Ada programming language and modern OpenGL methods, with textures, shaders and uniforms.  Compiles and runs on Windows, OSX, GNU/Linux systems.
 
 Focusing on portability, transparency, and open source freedom, this project relies exclusively on F.O.S.S. tools:  a thin GLFW3 binding, a thin OpenGL binding, a PNG reader by Stephen Sanguine & Dimitry Anisimkov, OpenAL Audio with a homebrew binding, and a GNAT compiler.
+
+The linux-build can run on multiple Linux distros!
+The Windows build can run on Win10 + Win11.
+
+I am short of testers, and would appreciate any feedback...
+Open source Ada developers are welcome to help improve or extend this app.
+Developer or not, send comments, suggestions or questions to:
+fastrgv@gmail.com
 
 
 
@@ -177,7 +175,7 @@ After the archive is unzipped...
 ------------------------------------------------------------------------
 Open a commandline terminal, and cd to the install directory.
 
-You will see a new directory appear, that you may rename.
+You will see a new directory, that may be renamed.
 
 Users should then cd to the install-directory, then, at the command line, type the executable name to start the game.
 
@@ -185,23 +183,32 @@ Users should then cd to the install-directory, then, at the command line, type t
 ------------------------------------------------------------------------
 Mac users type:
 
-	sokerban_osx
+* sokerban_osx
 
 ------------------------------------------------------------------------
-Windows users type "sokerban.bat" from the installation directory. Or to set the standard default of 10 seconds wait before giving up for internal solvers type:
-	binw64\sokerban.exe 10.0
+Windows users type 
+
+* sokerban.bat 
+
+from the installation directory. Or to set the standard default of 10 seconds wait before giving up for internal solvers type:
+
+* binw64\sokerban.exe 10.0
 
 ------------------------------------------------------------------------
 Linux users can type:
 
-	sokerban_gnu
+* sokerban_gnu
 
-or double click the icon for sokerban in file manager. Here too, sokerban 10.0 sets internal solver wait to 10 seconds.
+Here too, 
+
+* sokerban_gnu 30.0 
+
+sets internal solver wait to 30 seconds.
 
 You can also run the windows EXEs on Linux under wine thusly:
 
-	* wine cmd < sokerban.bat
-	* wine binw64/sokerban.exe
+* wine cmd < sokerban.bat
+* wine binw64/sokerban.exe
 
 Note: I suggest that Windows users DO NOT try running the linux executables under WSL [Windows Subsystem for Linux]; that mode is not supported. Simply use the windows version.
 
@@ -214,17 +221,17 @@ Note: I suggest that Windows users DO NOT try running the linux executables unde
 The install-directory should contain subdirectories named "data", "libs", and "games".
 
 
-The GNU/linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
+The linux executable must have access to ./libs unless your system already has the libraries it contains.  Then, at the command line type:
 
-	sokerban ( sokerban.bat )
+* sokerban_gnu
 
 Remember, the WASD or IJKL or arrow keys control movements.
 
 View Controls:
 
 * Your mouse can pan [up/down] & zoom
-* box-click:  possible destinations
-* goal-click: possible sources
+* mouse-button-box-click:  shows possible destinations for box
+* mouse-button-goal-click: possible matching boxes
 
 Also, the keyboard controls are:
 
@@ -237,19 +244,21 @@ Also, the keyboard controls are:
 * (\\) tilt downward
 * (=) try to autosolve (method #1 = iplr3r => fewest moves)
 * (,) try to autosolve (method #2 = ibox3r => fewest pushes)
-* (.) try to autosolve (method #3 = hbox4 => most capable)
+* (.) try to autosolve (method #3 = hbox5 => most capable)
 * (h) HELP
 * (b) Male Avatar (Boy)
 * (g) Female Avatar (Girl)
-* (0..5) set solution method for hbox4 :
-	0: fast		fastest method
-	1: pullOpt	minimize pushes
-	2: nonHung	nonHungarian
-	3: 0+mWt  	
-	4: 1+mWt  	default
-	5: 2+mWt		
+* (0..5) set solution method for hbox5, where :
+    * 0: fast		fastest method
+    * 1: pullOpt	minimize pushes
+    * 2: nonHung	nonHungarian
+    * 3: 0+mWt  	
+    * 4: 1+mWt  	default
+    * 5: 2+mWt		
 
-You can download my hbox4 stand-alone sokoban solver for greater details.
+You can download my hbox5 stand-alone sokoban solver for greater details:
+
+* https://sourceforge.net/projects/hbox4/    (4 is not a typo)
 
 
 Other controls, as indicated by the help screen:
@@ -266,14 +275,14 @@ Other controls, as indicated by the help screen:
 
 Note also that a specific sokoban file may be loaded by naming it on the terminal window command line with the following syntax:
 
-	[sokerban] sokfilepath maxlevels startlevel
+* [sokerban] sokfilepath maxlevels startlevel
 
 where [sokerban] can be 
-	sokerban_gnu, sokerban_osx or sokerban.bat.
+	sokerban_gnu, sokerban_osx or binw64\sokerban.exe
 
 For example on linux you could type
 
-	"sokerban_gnu games/original_50.sok 50 2"
+* sokerban_gnu games/original_50.sok 50 2
 
 to tackle level 2 from the original_50 sokoban file.  In this single-file mode, you can still use the next-level(n) & previous-level(p) keys, however, the next/previous files (R-shift/L-shift) keys are disabled.
 
@@ -288,27 +297,28 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ================================================================
 ## Build instructions:
 
-ccc.sh/ccc.bat are the build scripts for the autosolvers "hbox4", "iplr3r" and "ibox3r".
+cccgnu.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox5", "iplr3r" and "ibox3r".
 
 
-The following build scripts work for GNU Ada [with its own g++].
+The following build scripts work for GNU Ada [with its own g++],
+which are in the ~/buildScripts/ directory:
 
 
 -------------------------------------------------------
-msWin64 => setpath64.bat + wbuildall.bat
+* msWin64 => setpath64.bat + wbuildall.bat
 
-build script that requires libraries included in ./binw64/
 Please read ~/docs/gnuAdaOnWindows.txt.
 
 
 ------------------------------------------------------
-Mac/OSX => obuildall.sh
+* Mac/OSX => obuildall.sh
 
 ------------------------------------------------------
-GNU/Linux:  
+* GNU/Linux => lbuildall.sh  
 
-(lbuildall.sh):  utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban, which should run in the presence of ./libs.
+utilizes the relocatable libraries that I deliver in this bundle under ./libs/.  I use this to build the gnu/linux executable that I deliver named sokerban, which should run in the presence of ./libs.
 
+------------------------------------------------------
 If the delivered linux binary does not run...
 
 if you have wine installed, this should work:
@@ -327,7 +337,7 @@ OR you can:
 ---------------------------------
 ## License:
 
-W.C.Sokerban itself is covered by the GNU GPL v3 as indicated in the sources:
+This app is covered by the GNU GPL v3 as indicated in the sources:
 
  Copyright (C) 2024  <fastrgv@gmail.com>
 
@@ -375,6 +385,22 @@ https://gamejolt.com/@fastrgv/games
 
 ## Older Revision History:
 
+**ver 3.6.7 -- 4jan2024**
+* Fixed some errors and improved all embedded and external autosolvers.
+
+**ver 3.6.6 -- 16dec2023**
+* Added north/south view controls: PgUp/PgDn.
+
+**ver 3.6.5 -- 14dec2023**
+* Removed stadium view.
+* Simplified view controls so pan+zoom provides all views.
+* Fixed problem with the embedded ibox solver not respecting time limit.
+
+**ver 3.6.4 -- 13dec2023**
+* Upgraded hbox4 solvers, embedded & external.
+* Created a "stadium" view alternative to the "overhead" view.
+* Replaced the granite with a hedge boundary.
+
 **ver 3.6.3 -- 7oct2023**
 * New OSX build without bundle, & built without using Xcode.
 * Updated splaytree code for solvers.
@@ -415,7 +441,6 @@ https://gamejolt.com/@fastrgv/games
 	* possible destinations when a box is clicked.
 	* possible sources when a goal is clicked.
 
-
 **ver 3.5.5 -- 27oct20**
 * Elliminated SFML-audio entirely.
 * Greatly simplified build process.
@@ -424,26 +449,18 @@ https://gamejolt.com/@fastrgv/games
 * Updated all glfw libs to v3.3.2.
 * Added "sokerban.bat" for Windows users.
 
-
-
 **ver 3.5.3 -- 10jun20**
 * Improved coding to read WAV file while "protected".
 * Added onscreen feedback message when saving setpoint.
 
-
 **ver 3.5.2 -- 3apr20**
-
 * Improved linux sound system with no latency:  an Ada WAV-player using an Ada binding to the ALSA sound library.
 
-
 **ver 3.5.1 -- 14mar20**
-
 * Fixed broken Windows executables;
 * Linux build now uses Ada tasking to reduce kick sound latency.
 
-
 **ver 3.5.0 -- 20jan20**
-
 * Significantly improved linux portability;
 
 
