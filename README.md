@@ -23,6 +23,7 @@ Type "7z x filename" to extract the archive.
 ===================================================================================
 
 
+
 alternate download link:
 * https://sourceforge.net/projects/worldcupsokerban/
 
@@ -91,7 +92,15 @@ Thus, you can give yourself a headstart toward a correct solution by limited use
 
 Embedded autosolver failure might imply the present state of the puzzle is impossible to solve, or simply that the autosolver failed due to time constraint, or insufficient capability.
 
-Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using a command-line argument. 
+Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using another command-line argument.
+
+For example:
+
+	* binw64\sokerban.exe 30.0
+
+initiates the Windows version using 30 second timeout rather than the 10 second default.
+
+
 The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
 
 ### Summary:
