@@ -7,7 +7,7 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X a
 
 Click on the large 7zip file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.6.8/sb16dec24.7z
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.6.9/sb1jan25.7z
 
 Type "7z x filename" to extract the archive.
 
@@ -42,7 +42,7 @@ video soker-ban girl:
 
 **ver 3.6.9 -- 01jan2025**
 
-* Fixed embedded solver box4 method 3.
+* Fixed embedded solver box4. Now called hbox5.
 * Added "+", "-" number-keypad keys to adjust timeout.
 
 
