@@ -24,6 +24,7 @@ Type "7z x filename" to extract the archive.
 
 
 
+
 alternate download link:
 * https://sourceforge.net/projects/worldcupsokerban/
 
@@ -36,6 +37,13 @@ video soker-ban girl:
 ----------------------------------------------------------------
 
 ## What's new:
+
+
+
+**ver 3.6.9 -- 01jan2025**
+
+* Fixed embedded solver box4 method 3.
+* Added "+", "-" number-keypad keys to adjust timeout.
 
 
 
@@ -92,24 +100,22 @@ Thus, you can give yourself a headstart toward a correct solution by limited use
 
 Embedded autosolver failure might imply the present state of the puzzle is impossible to solve, or simply that the autosolver failed due to time constraint, or insufficient capability.
 
-Finally, a single command-line argument (decimal float) specifies a persistent timeout interval to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  A new setting remains in effect until a different setting is specified using another command-line argument.
 
-For example:
+The default **timeout** used by embedded solvers is adjustable using the (+)-key or (-)-key on the number keypad to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-	* binw64\sokerban.exe 30.0
-
-initiates the Windows version using 30 second timeout rather than the 10 second default.
-
-
-The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
+Also, the default **method** used by embedded solver Hbox5 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
 
 ### Summary:
 solver keys [within parentheses]:
 
-*	(=) bfs#1 [iplr; for small puzzles]; 
+*	(=) bfs#1 [iplr; best for small puzzles]; 
 *	(,) bfs#2 [ibox; medium]
-*	(.) hbox5 [most capable]; 
+*	(.) hbox5 [most capable];
+
 *  (0..5) sets hbox5 method [details below]
+*	(+) increase timeout (numKeypad)
+*	(-) decrease timeout (numKeypad)
+
 
 
 ### 6 method options for hbox5:
@@ -348,7 +354,7 @@ OR you can:
 
 This app is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2024  <fastrgv@gmail.com>
+ Copyright (C) 2025  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
