@@ -24,9 +24,8 @@ Type "7z x filename" to extract the archive.
 
 
 
-
 alternate download link:
-* https://sourceforge.net/projects/worldcupsokerban/
+* https://sourceforge.net/projects/worldcupsokerban/files/latest/download
 
 video soker-ban girl:
 * https://youtu.be/No_ElhmToqw
@@ -40,19 +39,17 @@ video soker-ban girl:
 
 
 
+
+**ver 3.6.10 -- 3mar2025**
+
+* Updated & improved 3 sok-solvers.
+
+
 **ver 3.6.9 -- 01jan2025**
 
-* Fixed embedded solver box4. Now called hbox5.
+* Fixed embedded solver box4. Now called hbox.
 * Added "+", "-" number-keypad keys to adjust timeout.
 
-
-
-**ver 3.6.8 -- 16dec2024**
-
-* Updated hbox4 to hbox5.
-* Updated embedded solver.
-* updated OpenAL sound code.
-* Updated memory checks for hbox5 to be more cautious.
 
 ## See complete revision history at end of file.
 
@@ -83,7 +80,6 @@ Works on PCs running Windows, OSX, or GNU/Linux.
  * uses OpenAL for the sounds, GLFW3 for input & window management;
  * fully OpenGL 3.3 core profile Ada code;
  * includes 3 "live" embedded autosolvers that help you to learn;
-
  * no installation
  * no dependencies
  * simply unzip in your Downloads directory, and run.
@@ -94,7 +90,7 @@ Works on PCs running Windows, OSX, or GNU/Linux.
 Three autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse, or difficult puzzles.
 
 Similarly, the 2nd alternate solver [ibox] is initiated with the (",")-key.
-The 3rd alternate solver [hbox5] is initiated with the (".")-key and is the most capable.
+The 3rd alternate solver [hbox] is initiated with the (".")-key and is the most capable.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
@@ -103,29 +99,32 @@ Embedded autosolver failure might imply the present state of the puzzle is impos
 
 The default **timeout** used by embedded solvers is adjustable using the (+)-key or (-)-key on the number keypad to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-Also, the default **method** used by embedded solver Hbox5 [ (.)-key ] can now be reset using the k-key, where k is 0..5.
+Also, the default **method** used by embedded solver Hbox [ (.)-key ] can now be reset using the k-key, where k is 0..5.
 
 ### Summary:
 solver keys [within parentheses]:
 
 *	(=) bfs#1 [iplr; best for small puzzles]; 
 *	(,) bfs#2 [ibox; medium]
-*	(.) hbox5 [most capable];
-
-*  (0..5) sets hbox5 method [details below]
+*	(.) hbox [most capable];
+*  (0..9) sets hbox method [details below]
 *	(+) increase timeout (numKeypad)
 *	(-) decrease timeout (numKeypad)
 
 
 
-### 6 method options for hbox5:
+### 10 method options for hbox:
 
-* 0 quickest
-* 1 more efficient
+* 0 "quickest" using 6 heuristics+inertia
+* 1 "move-efficient" +inertia
 * 2 suppress hungarian estimator (for dense puzzles)
-* 3 like 0 but tries to reduce total moves
-* 4 like 1 but tries to reduce total moves
-* 5 like 2 but tries to reduce total moves
+* 3 like 0 but single-step
+* 4 like 0 but using only 5-heuristics
+* 5 like 0 but using 1-heuristic (meth10)
+* 6 like 1 but using 1-heuristic (meth11)
+* 7 like 2 but using 1-heuristic (meth12)
+* 8 like 3 but using 1-heuristic (meth13)
+* 9 like 4 but using 1-heuristic (meth14)
 
 For further details see:
 
@@ -136,7 +135,7 @@ For further details see:
 
 ## External Autosolvers
 There are three external autosolvers without time constraints, and larger memory constraints.
-There are many large or sparse puzzles the first two solvers cannot handle, but they are pretty good at solving the small dense ones. Hbox5 is the most capable.
+There are many large or sparse puzzles the first two solvers cannot handle, but they are pretty good at solving the small dense ones. Hbox is the most capable.
 
 To run type:  [exeName puzzleFile LevelToSolve]
 
@@ -148,7 +147,7 @@ EG on windows type:
 
 EG on linux type:
 
-	external_solvers/hbox5_gnu games/pico_22.sok 3
+	external_solvers/hbox_gnu games/pico_22.sok 3
 
 EG on OSX type:
 
@@ -259,19 +258,23 @@ Also, the keyboard controls are:
 * (\\) tilt downward
 * (=) try to autosolve (method #1 = iplr3r => fewest moves)
 * (,) try to autosolve (method #2 = ibox3r => fewest pushes)
-* (.) try to autosolve (method #3 = hbox5 => most capable)
+* (.) try to autosolve (method #3 = hbox => most capable)
 * (h) HELP
 * (b) Male Avatar (Boy)
 * (g) Female Avatar (Girl)
-* (0..5) set solution method for hbox5, where :
-    * 0: fast		fastest method
-    * 1: pullOpt	minimize pushes
-    * 2: nonHung	nonHungarian
-    * 3: 0+mWt  	
-    * 4: 1+mWt  	default
-    * 5: 2+mWt		
+* (0..9) set solution method for hbox, where :
+	* 0 "quickest" using 6 heuristics+inertia
+	* 1 "move-efficient" +inertia
+	* 2 suppress hungarian estimator (for dense puzzles)
+	* 3 like 0 but single-step
+	* 4 like 0 but using only 5-heuristics
+	* 5 like 0 but using 1-heuristic (meth10)
+	* 6 like 1 but using 1-heuristic (meth11)
+	* 7 like 2 but using 1-heuristic (meth12)
+	* 8 like 3 but using 1-heuristic (meth13)
+	* 9 like 4 but using 1-heuristic (meth14)
 
-You can download my hbox5 stand-alone sokoban solver for greater details:
+You can download my hbox stand-alone sokoban solver for greater details:
 
 * https://sourceforge.net/projects/hbox4/    (4 is not a typo)
 
@@ -312,7 +315,7 @@ to tackle level 2 from the original_50 sokoban file.  In this single-file mode, 
 ================================================================
 ## Build instructions:
 
-cccgnu.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox5", "iplr3r" and "ibox3r".
+cccgnu.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox", "iplr3r" and "ibox3r".
 
 
 The following build scripts work for GNU Ada [with its own g++],
@@ -399,6 +402,12 @@ https://gamejolt.com/@fastrgv/games
 
 
 ## Older Revision History:
+
+**ver 3.6.8 -- 16dec2024**
+* Updated hbox4 to hbox5.
+* Updated embedded solver.
+* updated OpenAL sound code.
+* Updated memory checks for hbox5 to be more cautious.
 
 **ver 3.6.7 -- 4jan2024**
 * Fixed some errors and improved all embedded and external autosolvers.
