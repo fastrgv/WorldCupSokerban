@@ -24,14 +24,17 @@ Type "7z x filename" to extract the archive.
 
 
 
+
 alternate download link:
 * https://sourceforge.net/projects/worldcupsokerban/files/latest/download
 
-video soker-ban girl:
-* https://youtu.be/No_ElhmToqw
 
 
 # World Cup Sokerban
+	Sokoban Game Platform for Soccer Fans
+	using OpenGL, GLFW3 & OpenAL audio
+	with embedded live solvers
+
 
 ----------------------------------------------------------------
 
@@ -40,15 +43,15 @@ video soker-ban girl:
 
 
 
-**ver 3.6.10 -- 3mar2025**
+**ver 3.6.11 -- 17dec2025**
 
-* Updated & improved 3 sok-solvers.
-
-
-**ver 3.6.9 -- 01jan2025**
-
-* Fixed embedded solver box4. Now called hbox.
-* Added "+", "-" number-keypad keys to adjust timeout.
+* Updated hbox solver.
+* Added a utility screen to help choose a solution method for hbox.
+* Improved readability of help screen.
+* Added b-key display of box-invalid locations.
+* Added (space)-key display of freeSpace locations.
+* Improved user friendliness by skipping over huge levels rather than aborting.
+* Increased the puzzle size capacity to 128 boxes and 64 rows & cols.
 
 
 ## See complete revision history at end of file.
@@ -63,17 +66,18 @@ To move the "pusher" use the arrow keys, ijkl keys, or wasd keys.  The objective
 
 The (=)-key or the (,)-key or the (.)-key trigger embedded solvers that helps you when you get stuck.  You can single-step to a final solution, or to just part way toward the solution, in order to give you a hint. This feature is essential to learning to solve on your own.
 
-Note: all 3 solvers can fail if the puzzle is too large or difficult, so the default timeout is 10 seconds.
+Note: all 3 solvers can fail if the puzzle is too large or difficult, so the default timeout is 10 seconds, yet is user-adjustable.
 
 The mouse can be used to control the game viewpoint.  The mouse wheel adjusts the eye distance;  a left button drag changes view angle;  a right button click restores the default view settings.  
 
 Works on PCs running Windows, OSX, or GNU/Linux.
 
 
+
 --------------------------
 ## Features:
  * laptop friendly;
- * user definable puzzles;
+ * user definable puzzles can be added;
  * many predefined puzzles ranging from easy to nearly impossible;
  * Windows, OSX, GNU/linux binaries included;
  * full source code;
@@ -85,12 +89,13 @@ Works on PCs running Windows, OSX, or GNU/Linux.
  * simply unzip in your Downloads directory, and run.
  * or unzip onto a USB flash drive [w/same file format] and run.
 
+
 ----------------------------------------------
 ## Embedded Autosolver Function
-Three autosolvers are now embedded within this application so that pressing the ("=")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse, or difficult puzzles.
+Three autosolvers are now embedded within this application so that pressing the (".")-key at any time initiates an attempt by the primary solver [puller] to solve the present state of the current puzzle within a limited amount of time.  If successful then you will see an onscreen prompt to continue to press the same key to single-step toward the solution.  Otherwise you will see no such prompt.  These embedded solvers are good for small and dense layouts;  but not so good at large, sparse, or difficult puzzles.
 
 Similarly, the 2nd alternate solver [ibox] is initiated with the (",")-key.
-The 3rd alternate solver [hbox] is initiated with the (".")-key and is the most capable.
+The 3rd alternate solver [hbox] is initiated with the ("=")-key and is the most capable.
 
 Thus, you can give yourself a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the equal-key and proceed manually.  This really helps when you cannot see what your next move should be.
 
@@ -99,36 +104,32 @@ Embedded autosolver failure might imply the present state of the puzzle is impos
 
 The default **timeout** used by embedded solvers is adjustable using the (+)-key or (-)-key on the number keypad to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-Also, the default **method** used by embedded solver Hbox [ (.)-key ] can now be reset using the k-key, where k is 0..5.
+Also, the **method** used by embedded solver Hbox is now set using the m-key...
+
 
 ### Summary:
 solver keys [within parentheses]:
 
-*	(=) bfs#1 [iplr; best for small puzzles]; 
+*	(=) hbox [most capable];
 *	(,) bfs#2 [ibox; medium]
-*	(.) hbox [most capable];
-*  (0..9) sets hbox method [details below]
+*	(.) bfs#3 [iplr; best for small or dense puzzles]; 
 *	(+) increase timeout (numKeypad)
 *	(-) decrease timeout (numKeypad)
+*  (m) menu to set hbox method
+
+
+### Method options for hbox:
+There are many hbox solution methods to choose from including 5 basic methods,
+each of which has several variations, because hbox is currently being used 
+as a research tool.
+See ~/docs/solmethods.txt for choices available within this app.
+See ~/docs/SolMethodsIndex.txt for an exhaustive listing for the external hbox solver.
+
+Even more information can be found by studying the documents in:
+https://sourceforge.net/projects/hbox4/files/latest/download
 
 
 
-### 10 method options for hbox:
-
-* 0 "quickest" using 6 heuristics+inertia
-* 1 "move-efficient" +inertia
-* 2 suppress hungarian estimator (for dense puzzles)
-* 3 like 0 but single-step
-* 4 like 0 but using only 5-heuristics
-* 5 like 0 but using 1-heuristic (meth10)
-* 6 like 1 but using 1-heuristic (meth11)
-* 7 like 2 but using 1-heuristic (meth12)
-* 8 like 3 but using 1-heuristic (meth13)
-* 9 like 4 but using 1-heuristic (meth14)
-
-For further details see:
-
-* https://sourceforge.net/projects/hbox4/ (4 is correct)
 
 
 
@@ -226,9 +227,6 @@ You can also run the windows EXEs on Linux under wine thusly:
 
 Note: I suggest that Windows users DO NOT try running the linux executables under WSL [Windows Subsystem for Linux]; that mode is not supported. Simply use the windows version.
 
-**If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the command with "padsp",EG:  "padsp (ExeName)".**
-
-
 
 ------------------------------------------------------------------------
 
@@ -239,40 +237,41 @@ The linux executable must have access to ./libs unless your system already has t
 
 * sokerban_gnu
 
-Remember, the WASD or IJKL or arrow keys control movements.
+
+
+## Controls
+
+The WASD or IJKL or arrow keys control movements.
 
 View Controls:
 
 * Your mouse can pan [up/down] & zoom
-* mouse-button-box-click:  shows possible destinations for box
-* mouse-button-goal-click: possible matching boxes
 
 Also, the keyboard controls are:
 
+* (esc), (q)  Quit
+
+* (h) HELP
+* (g) toggle avatar Gender
+
 * (c) zoom Closer
 * (f) zoom Further
-* (o) zoom default
+* (o) zoom default reset
+
 * (PgUp) move viewpoint North
 * (PgDn) move viewpoint South
+
 * (/) tilt upward
 * (\\) tilt downward
-* (=) try to autosolve (method #1 = iplr3r => fewest moves)
+
+* (+) keyPadPlus: add 10 seconds to solver wait time
+* (-) keyPadMinus: subtract 10 seconds from solver wait time
+
+* (=) try to autosolve (method #1 = hbox => most capable)
 * (,) try to autosolve (method #2 = ibox3r => fewest pushes)
-* (.) try to autosolve (method #3 = hbox => most capable)
-* (h) HELP
-* (b) Male Avatar (Boy)
-* (g) Female Avatar (Girl)
-* (0..9) set solution method for hbox, where :
-	* 0 "quickest" using 6 heuristics+inertia
-	* 1 "move-efficient" +inertia
-	* 2 suppress hungarian estimator (for dense puzzles)
-	* 3 like 0 but single-step
-	* 4 like 0 but using only 5-heuristics
-	* 5 like 0 but using 1-heuristic (meth10)
-	* 6 like 1 but using 1-heuristic (meth11)
-	* 7 like 2 but using 1-heuristic (meth12)
-	* 8 like 3 but using 1-heuristic (meth13)
-	* 9 like 4 but using 1-heuristic (meth14)
+* (.) try to autosolve (method #3 = iplr3r => fewest moves)
+
+* (m) set solution method for hbox
 
 You can download my hbox stand-alone sokoban solver for greater details:
 
@@ -285,11 +284,19 @@ Other controls, as indicated by the help screen:
 * (u) to undo a move
 * (r) reset to the setPt;   
 * (enter) restart puzzle
+
 * (n) next-level in current file
 * (p) previous-level in current file
+
 * (L-shift) previous file
 * (R-shift) next file
-* (z) reZero the setpoint
+
+* (z) reZero...define new setpoint
+* (x) dump state to file Pdump.sok
+* (b)     show box-Invalid cells
+* (space) show freeSpace cells
+* (y) toggle graphical details
+
 
 Note also that a specific sokoban file may be loaded by naming it on the terminal window command line with the following syntax:
 
@@ -303,6 +310,13 @@ For example on linux you could type
 * sokerban_gnu games/original_50.sok 50 2
 
 to tackle level 2 from the original_50 sokoban file.  In this single-file mode, you can still use the next-level(n) & previous-level(p) keys, however, the next/previous files (R-shift/L-shift) keys are disabled.
+
+
+
+## Limitations
+This app can handle up to a maximum of 128 boxes, 64 rows/cols, up to 255 box-valid interior cells.
+
+
 
 
 ================================================================
@@ -377,8 +391,6 @@ This app is covered by the GNU GPL v3 as indicated in the sources:
 ## Media Files:
 
 ### General Note
-The particular choice of sound and image files delivered are not essential to the function of the game and are easily replaced.  This software is primarily intended as a tutorial example of modern OpenGL methods.  The only requirements are that sounds be in WAV format and images be in PNG format.
-
 It is my intention to use media with copyrights or licenses that are compatible with GPLv3. Please notify me if you believe there is an incompatibility, and it will be removed ASAP, eg a CC-by-NC license is NOT GPL compatible.
 
 
@@ -402,6 +414,13 @@ https://gamejolt.com/@fastrgv/games
 
 
 ## Older Revision History:
+
+**ver 3.6.10 -- 3mar2025**
+* Updated & improved 3 sok-solvers.
+
+**ver 3.6.9 -- 01jan2025**
+* Fixed embedded solver box4. Now called hbox.
+* Added "+", "-" number-keypad keys to adjust timeout.
 
 **ver 3.6.8 -- 16dec2024**
 * Updated hbox4 to hbox5.
