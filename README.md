@@ -42,6 +42,10 @@ alternate download link:
 
 
 
+**ver 3.7.0 -- 19dec2025**
+
+* Added **first person mode !** using the 1-key to toggle.
+
 
 **ver 3.6.11 -- 17dec2025**
 
