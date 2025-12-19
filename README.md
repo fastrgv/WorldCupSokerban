@@ -41,6 +41,10 @@ alternate download link:
 ## What's new:
 
 
+**ver 3.7.1 -- 20dec2025**
+
+* Improved smoother movements in first-person mode, less confusing.
+
 
 **ver 3.7.0 -- 19dec2025**
 
