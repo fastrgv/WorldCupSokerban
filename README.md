@@ -1,5 +1,5 @@
-![screenshot](https://github.com/fastrgv/WorldCupSokerban/blob/master/female.jpg)
 
+![screenshot](https://github.com/fastrgv/WorldCupSokerban/blob/master/sban2of2.png)
 
 
 # WorldCupSokerban
