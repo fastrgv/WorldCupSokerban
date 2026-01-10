@@ -410,6 +410,18 @@ Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound
 ...for textures were freely [no copyright indications] available on google images.  Files for text-textures were created using gimp and are also covered by the GNU GPL v3 license.  The pusher man is modified from a skin by Anders Widell, so thanks to Anders for that.  An alternate pusher is also available that was obtained from OpenGameArt.org and created by felixschuett with a CC0 license.
 
 
+
+### Boxoban Puzzle Set Citation:
+
+@misc{boxobanlevels,
+author = {Arthur Guez and Mehdi Mirza and Karol Gregor and Rishabh Kabra and Sebastien Racaniere and Theophane Weber and David Raposo and Adam Santoro and Laurent Orseau and Tom Eccles and Greg Wayne and David Silver and Timothy Lillicrap and Victor Valdes},
+title = {An investigation of Model-free planning: boxoban levels},
+howpublished= {https://github.com/deepmind/boxoban-levels/},
+year = "2018"
+}
+
+
+
 ----------------------------------------------
 ## Download Site for all my games:
 https://github.com/fastrgv?tab=repositories
