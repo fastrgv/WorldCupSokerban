@@ -25,44 +25,34 @@ Type "7z x filename" to extract the archive.
 
 
 
-alternate download link:
+
+permalink:
+
 * https://sourceforge.net/projects/worldcupsokerban/files/latest/download
 
+Latest video:
+
+* https://www.youtube.com/watch?v=7mgJhpsAeQw
 
 
 # World Cup Sokerban
 	Sokoban Game Platform for Soccer Fans
+	with the voice of Andres Cantor
 	using OpenGL, GLFW3 & OpenAL audio
-	with embedded live solvers
+	and embedded live solvers
 
 
 ----------------------------------------------------------------
 
 ## What's new:
 
+**ver 3.7.2 -- 17jan2026**
 
-**ver 3.7.1 -- 20dec2025**
+* Enabled changing levels more quickly using (shft)+p, (shft)+n.
+* Now change puzzle files using (ctrl)+p, (ctrl)+n
+* Eliminated need for MSVC-redistributables installation on M.S. Windows 10, 11.
 
-* Improved smoother movements in first-person mode, less confusing.
-
-
-**ver 3.7.0 -- 19dec2025**
-
-* Added **first person mode !** using the 1-key to toggle.
-
-
-**ver 3.6.11 -- 17dec2025**
-
-* Updated hbox solver.
-* Added a utility screen to help choose a solution method for hbox.
-* Improved readability of help screen.
-* Added b-key display of box-invalid locations.
-* Added (space)-key display of freeSpace locations.
-* Improved user friendliness by skipping over huge levels rather than aborting.
-* Increased the puzzle size capacity to 128 boxes and 64 rows & cols.
-
-
-## See complete revision history at end of file.
+##### See complete revision history at end of file.
 
 
 ## WorldCupSokerban Description
@@ -260,6 +250,7 @@ Also, the keyboard controls are:
 * (esc), (q)  Quit
 
 * (h) HELP
+* (1) toggle first-person mode
 * (g) toggle avatar Gender
 
 * (c) zoom Closer
@@ -294,10 +285,13 @@ Other controls, as indicated by the help screen:
 * (enter) restart puzzle
 
 * (n) next-level in current file
-* (p) previous-level in current file
+* (shft)+(n) skip ahead 10 levels
 
-* (L-shift) previous file
-* (R-shift) next file
+* (p) previous-level in current file
+* (shft)+(p) skip back 10 levels
+
+* (ctrl)+(p)  previous file
+* (ctrl)+(n)  next file
 
 * (z) reZero...define new setpoint
 * (x) dump state to file Pdump.sok
@@ -317,14 +311,25 @@ For example on linux you could type
 
 * sokerban_gnu games/original_50.sok 50 2
 
-to tackle level 2 from the original_50 sokoban file.  In this single-file mode, you can still use the next-level(n) & previous-level(p) keys, however, the next/previous files (R-shift/L-shift) keys are disabled.
+to tackle level 2 from the original_50 sokoban file.  In this single-file mode, you can still use the next-level(n) & previous-level(p) keys, however, the next/previous files (ctrl+n,ctrl+p) keys are disabled.
 
+
+## New First-Person Mode Details
+Note that the arrow keys work differently in first-person mode:
+
+* up => move forward
+* lf => turn left [does not move]
+* rt => turn right [no move]
+* dn => turn around [no move]
+
+Normal [third-person] mode is recommended during autosolve.
 
 
 ## Limitations
 This app can handle up to a maximum of 128 boxes, 64 rows/cols, up to 255 box-valid interior cells.
 
-
+## Adding Puzzle Sets
+You may add or remove puzzle sets from the ~/games/ directory, but then you should remove the ~/data/resume.txt file before restarting the app.
 
 
 ================================================================
@@ -337,7 +342,7 @@ This app can handle up to a maximum of 128 boxes, 64 rows/cols, up to 255 box-va
 ================================================================
 ## Build instructions:
 
-cccgnu.sh/cccosx.sh/ccc.bat are the build scripts for the autosolvers "hbox", "iplr3r" and "ibox3r".
+cccgnu.sh/cccosx.sh/ccc.bat (linux/osx/mswin) are the build scripts for the external autosolvers "hbox", "iplr3r" and "ibox3r".
 
 
 The following build scripts work for GNU Ada [with its own g++],
@@ -379,7 +384,7 @@ OR you can:
 
 This app is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2025  <fastrgv@gmail.com>
+ Copyright (C) 2026  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -411,7 +416,12 @@ Andres Cantor sound downloaded from YouTube and trimmed with FFMPEG.  Kick sound
 
 
 
-### Boxoban Puzzle Set Citation:
+### Boxoban Puzzle Set
+
+Boxoban is a newly added A.I. generated puzzle set.
+Using only 4 boxes, this set is trivial for even a simple BFS solver, yet can be tricky for a human solver, especially in first-person mode.
+
+#### Requested Boxoban Citation:
 
 @misc{boxobanlevels,
 author = {Arthur Guez and Mehdi Mirza and Karol Gregor and Rishabh Kabra and Sebastien Racaniere and Theophane Weber and David Raposo and Adam Santoro and Laurent Orseau and Tom Eccles and Greg Wayne and David Silver and Timothy Lillicrap and Victor Valdes},
@@ -424,16 +434,34 @@ year = "2018"
 
 ----------------------------------------------
 ## Download Site for all my games:
-https://github.com/fastrgv?tab=repositories
-https://www.indiedb.com/members/fastrgv/games
-https://fastrgv.itch.io
-https://sourceforge.net/u/fastrgv/profile/
-https://gamejolt.com/@fastrgv/games
 
-## Tags:  sokoban, puzzle, soccer, football
+* https://github.com/fastrgv?tab=repositories
+* https://www.indiedb.com/members/fastrgv/games
+* https://fastrgv.itch.io
+* https://sourceforge.net/u/fastrgv/profile/
+* https://gamejolt.com/@fastrgv/games
+
+## Tags:  
+
+	sokoban, puzzle, soccer, football
 
 
 ## Older Revision History:
+
+**ver 3.7.1 -- 20dec2025**
+* Improved smoother movements in first-person mode, less confusing.
+
+**ver 3.7.0 -- 18dec2025**
+* Added **first person mode !** using the 1-key to toggle.
+
+**ver 3.6.11 -- 17dec2025**
+* Updated hbox solver.
+* Added a utility screen to help choose a solution method for hbox.
+* Improved readability of help screen.
+* Added b-key display of box-invalid locations.
+* Added (space)-key display of freeSpace locations.
+* Improved user friendliness by skipping over huge levels rather than aborting.
+* Increased the puzzle size capacity to 128 boxes and 64 rows & cols.
 
 **ver 3.6.10 -- 3mar2025**
 * Updated & improved 3 sok-solvers.
