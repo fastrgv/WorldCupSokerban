@@ -7,7 +7,7 @@ This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X a
 
 Click on the large 7zip file under releases for all source & binaries, or try this link:
 
-https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.7.2/sb17jan26.7z
+https://github.com/fastrgv/WorldCupSokerban/releases/download/v3.7.3/sb8feb26.7z
 
 Type "7z x filename" to extract the archive.
 
