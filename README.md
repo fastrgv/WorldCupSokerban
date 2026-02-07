@@ -26,6 +26,15 @@ Type "7z x filename" to extract the archive.
 
 
 
+
+# World Cup Sokerban
+	Sokoban Game Platform for Soccer Fans
+	with the voice of Andres Cantor
+	using OpenGL, OpenAL audio
+	and embedded live solvers
+
+----------------------------------------------------------------
+
 permalink:
 
 * https://sourceforge.net/projects/worldcupsokerban/files/latest/download
@@ -34,17 +43,15 @@ Latest video:
 
 * https://www.youtube.com/watch?v=7mgJhpsAeQw
 
-
-# World Cup Sokerban
-	Sokoban Game Platform for Soccer Fans
-	with the voice of Andres Cantor
-	using OpenGL, GLFW3 & OpenAL audio
-	and embedded live solvers
-
-
 ----------------------------------------------------------------
 
 ## What's new:
+
+
+**ver 3.7.3 -- 8feb2026**
+
+* Corrected move & push counts after undo or restore-setpoint
+
 
 **ver 3.7.2 -- 17jan2026**
 
@@ -55,6 +62,7 @@ Latest video:
 ##### See complete revision history at end of file.
 
 
+----------------------------------------------------------------
 ## WorldCupSokerban Description
 This is a soccer-themed, 3D sokoban puzzle game that includes 3 embedded solvers.
 
